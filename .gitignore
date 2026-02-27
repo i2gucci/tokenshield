@@ -36,3 +36,5 @@ Thumbs.db
 # Solana
 test-ledger/
 *.keypair
+# Internal documentation (keep local only)
+.internal-docs/

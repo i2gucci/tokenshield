@@ -12,8 +12,6 @@ Token Shield protects traders from catastrophic losses in volatile Solana tokens
 - Automatically paying out coverage when triggers are confirmed
 - Enabling degens to hold high-conviction positions with capped downside
 
-Read the full concept in [concept.md](concept.md).
-
 ## 📁 Project Structure
 
 ```
@@ -32,10 +30,10 @@ token-shield/
 │   └── token-shield.ts       # Anchor tests
 ├── index.html                # Landing page with hero, features
 ├── docs.html                 # Complete protocol documentation
+├── app.html                  # VRF-based policy interface
 ├── styles.css                # Terminal-themed styling
 ├── script.js                 # Interactive functionality
-├── concept.md                # Project concept & architecture
-├── recommendations.md        # Architecture decisions
+├── app.js                    # Policy enrollment logic
 ├── Anchor.toml               # Anchor configuration
 ├── package.json              # NPM dependencies
 └── README.md                 # This file
@@ -62,8 +60,6 @@ token-shield/
    - Right-click `index.html` → "Open with Live Server"
 
 ### Smart Contract Development
-
-> **Windows Users**: See [WINDOWS_SETUP.md](WINDOWS_SETUP.md) for complete WSL2 installation guide.
 
 **Prerequisites:**
 - [Rust](https://www.rust-lang.org/tools/install) 1.70+
