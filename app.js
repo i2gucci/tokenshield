@@ -139,20 +139,6 @@ function validateForm() {
 
     createButton.disabled = !(isValidAddress && hasValidPosition);
 }
-        });
-    });
-
-    // Duration slider
-    durationSlider.addEventListener('input', (e) => {
-        durationValue.textContent = e.target.value;
-        updatePremiumCalculation();
-    });
-
-    // Create policy button
-    createButton.addEventListener('click', async () => {
-        await createPolicy();
-    });
-}
 
 async function lookupToken(mintAddress) {
     if (!mintAddress || mintAddress.length < 32) {
@@ -168,7 +154,31 @@ async function lookupToken(mintAddress) {
             symbol: 'EXAMPLE',
             price: 0.123456,
             change24h: -12.5,
-            liquidity: 2500000,
+            liquidity: 2500000
+        };
+
+        appState.tokenInfo = mockTokenData;
+        validateForm();
+        
+        // Display token info
+        const tokenInfoDiv = document.getElementById('tokenInfo');
+        tokenInfoDiv.innerHTML = `
+            <div class="token-info-display">
+                <h3>${mockTokenData.name} (${mockTokenData.symbol})</h3>
+                <p>Price: $${mockTokenData.price.toFixed(6)}</p>
+                <p>24h Change: ${mockTokenData.change24h}%</p>
+                <p>Liquidity: $${mockTokenData.liquidity.toLocaleString()}</p>
+            </div>
+        `;
+        tokenInfoDiv.style.display = 'block';
+        
+    } catch (error) {
+        console.error('Failed to lookup token:', error);
+        document.getElementById('tokenInfo').style.display = 'none';
+    }
+}
+
+async function createPolicy() {
     const button = document.getElementById('createPolicy');
     button.disabled = true;
     button.textContent = '$ processing...';
@@ -267,7 +277,25 @@ function printPolicyBackup() {
             <style>
                 body { font-family: monospace; padding: 20px; }
                 h1 { border-bottom: 2px solid #000; padding-bottom: 10px; }
-        y Lookup
+                .info { margin: 10px 0; }
+            </style>
+        </head>
+        <body>
+            <h1>Token Shield Policy Backup</h1>
+            <div class="info">
+                <p><strong>Policy ID:</strong> ${appState.currentPolicy.policyId}</p>
+                <p><strong>Secret:</strong> ${appState.currentPolicy.secret}</p>
+                <p><strong>Created:</strong> ${appState.currentPolicy.createdAt}</p>
+                <p><strong>WARNING:</strong> Keep this file secure!</p>
+            </div>
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+
+// Policy Lookup
 function initializeLookupForm() {
     const lookupBtn = document.getElementById('lookupPolicy');
     
@@ -338,7 +366,21 @@ function displayPolicy(policy) {
     const statusBadge = card.querySelector('.status-badge');
     statusBadge.classList.add(policy.status.toLowerCase());
     
-    container.appendChild(card)
+    container.appendChild(card);
+}
+
+function updatePremiumCalculation() {
+    const positionSize = parseFloat(document.getElementById('positionSize').value) || 0;
+    const coverageLevel = parseInt(document.querySelector('input[name="coverage"]:checked').value) || 50;
+    const duration = parseInt(document.getElementById('duration').value) || 12;
+
+    // Calculate premium based on position size and coverage
+    const basePremium = positionSize * 0.01;
+    const riskMultiplier = coverageLevel / 50;
+    const durationFactor = duration / 12;
+    const totalPremium = basePremium * riskMultiplier * durationFactor;
+    const maxPayout = totalPremium * 5.75;
+
     // Update UI
     document.getElementById('basePremium').textContent = `${basePremium.toFixed(2)} USDC`;
     document.getElementById('riskMultiplier').textContent = `${riskMultiplier.toFixed(2)}x`;
@@ -347,38 +389,21 @@ function displayPolicy(policy) {
     document.getElementById('maxPayout').textContent = `${maxPayout.toFixed(2)} USDC`;
 }
 
-async function createPolicy() {
-    if (!appState.connected) {
-        alert('Please connect your wallet first');
-        return;
-    }
+function resetCreateForm() {
+    document.getElementById('walletAddress').value = '';
+    document.getElementById('tokenMint').value = '';
+    document.getElementById('positionSize').value = '';
+    document.getElementById('tokenInfo').style.display = 'none';
+    document.getElementById('duration').value = 12;
+    document.getElementById('durationValue').textContent = '12';
+    validateForm();
+}
 
-    const button = document.getElementById('createPolicy');
-    button.disabled = true;
-    button.textContent = '$ processing...';
-
-    try {
-        // TODO: Implement actual Anchor transaction
-        // For now, simulate the transaction
-        await new Promise(resolve => setTimeout(resolve, 2000));
-
-        alert('Policy created successfully!\n\nYour policy token has been minted to your wallet.');
-        
-        // Reset form
-        document.getElementById('tokenMint').value = '';
-        document.getElementById('positionSize').value = '';
-        document.getElementById('tokenInfo').style.display = 'none';
-        
-        // Switch to policies tab
-        document.querySelector('[data-tab="policies"]').click();
-        
-    } catch (error) {
-        console.error('Failed to create policy:', error);
-        alert('Failed to create policy. Please try again.');
-    } finally {
-        button.disabled = false;
-        button.textContent = '$ ./create_policy.sh';
-    }
+function copyCredentialsToClipboard() {
+    const credentials = `Policy ID: ${appState.currentPolicy.policyId}\nSecret: ${appState.currentPolicy.secret}`;
+    navigator.clipboard.writeText(credentials).then(() => {
+        alert('Credentials copied to clipboard!');
+    });
 }
 
 // Policies View
