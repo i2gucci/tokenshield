@@ -26,8 +26,12 @@ function initializeTabs() {
             const tabName = tab.getAttribute('data-tab');
             
             // Update active tab
-            tabs.forEach(t => t.classList.remove('active'));
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
             tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
             
             // Update active content
             tabContents.forEach(content => {

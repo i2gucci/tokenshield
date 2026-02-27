@@ -2192,8 +2192,154 @@ body.terminal-mode {
         flex-direction: column;
     }
     
-    .wallet-connection {
-        margin-left: 0;
-        margin-top: 10px;
+    .backup-actions {
+        grid-template-columns: 1fr;
     }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Feedback Links */
+.feedback-link {
+    color: #00ff00 !important;
+    font-size: 11px;
+}
+
+.feedback-link-small {
+    color: #00ff00 !important;
+    font-size: 10px;
+}
+
+.feedback-link-inline {
+    color: #00ff00 !important;
+    text-decoration: underline;
+}
+
+.feedback-nav-link {
+    color: #00ff00 !important;
+}
+
+/* Spacing Utilities */
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-12 {
+    margin-top: 12px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+/* Text Utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-large {
+    font-size: 16px;
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+.text-extra-small {
+    font-size: 10px;
+}
+
+.text-11 {
+    font-size: 11px;
+}
+
+.text-gray {
+    color: var(--terminal-gray);
+}
+
+/* Display Utilities */
+.d-none {
+    display: none;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.d-inline-flex {
+    display: inline-flex;
+}
+
+/* Border and Background */
+.border-none {
+    border: none;
+}
+
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+.text-decoration-underline {
+    text-decoration: underline;
+}
+
+.width-auto {
+    width: auto;
+}
+
+.feedback-cta-section {
+    background: rgba(0,255,0,0.03);
+    border: 2px solid #00ff00;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.feedback-callout {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #00ff00;
+    background: rgba(0,255,0,0.05);
+    margin-bottom: 20px;
+}
+
+.feedback-callout p {
+    margin: 0;
+}
+
+.feedback-callout strong {
+    color: #00ff00;
 }

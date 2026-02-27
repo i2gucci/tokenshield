@@ -43,32 +43,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Consolidated form submission handler
+    function handleWaitlistSubmit(form, shouldCloseModal = false) {
+        const email = form.querySelector('input[name="email"], input[type="email"]').value;
+        const twitter = form.querySelector('input[name="twitter"], input[type="text"]').value;
+        const acceptsRisks = form.querySelector('input[name="acceptRisk"], input[type="checkbox"]').checked;
+        
+        if (!acceptsRisks) {
+            alert('⚠️  You must accept the risks to join the waitlist.');
+            return false;
+        }
+        
+        // Show success message
+        alert(`✓ SUCCESS\n\nYou're on the list, degen!\n\nWe'll notify ${email} when Token Shield launches.\n\n🛡️  Stay safe out there.`);
+        
+        // Close modal if needed
+        if (shouldCloseModal && modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Reset form
+        form.reset();
+        return true;
+    }
+    
     // Handle modal form submission
     if (modalForm) {
         modalForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const email = this.querySelector('input[name="email"]').value;
-            const twitter = this.querySelector('input[name="twitter"]').value;
-            const acceptsRisks = this.querySelector('input[name="acceptRisk"]').checked;
-            
-            if (!acceptsRisks) {
-                alert('⚠️  You must accept the risks to join the waitlist.');
-                return;
-            }
-            
-            // In production, this would send to a backend/API
-            console.log('Waitlist signup:', { email, twitter, acceptsRisks });
-            
-            // Show success message
-            alert(`✓ SUCCESS\n\nYou're on the list, degen!\n\nWe'll notify ${email} when Token Shield launches.\n\n🛡️  Stay safe out there.`);
-            
-            // Close modal
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            
-            // Reset form
-            this.reset();
+            handleWaitlistSubmit(this, true);
         });
     }
 
@@ -77,24 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (ctaForm) {
         ctaForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const email = this.querySelector('input[type="email"]').value;
-            const twitter = this.querySelector('input[type="text"]').value;
-            const acceptsRisks = this.querySelector('input[type="checkbox"]').checked;
-            
-            if (!acceptsRisks) {
-                alert('⚠️  You must accept the risks to join the waitlist.');
-                return;
-            }
-            
-            // In production, this would send to a backend/API
-            console.log('Waitlist signup:', { email, twitter, acceptsRisks });
-            
-            // Show success message
-            alert(`✓ SUCCESS\n\nYou're on the list, degen!\n\nWe'll notify ${email} when Token Shield launches.\n\n🛡️  Stay safe out there.`);
-            
-            // Reset form
-            this.reset();
+            handleWaitlistSubmit(this, false);
         });
     }
 

@@ -21,7 +21,7 @@
                 <a href="index.html" class="nav-link-cmd">/home</a>
                 <a href="docs.html" class="nav-link-cmd">/docs</a>
                 <a href="app.html" class="nav-link-cmd active">/app</a>
-                <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="nav-link-cmd" style="color: #00ff00;">/feedback</a>
+                <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="nav-link-cmd feedback-nav-link">/feedback</a>
             </div>
         </nav>
     </header>
@@ -30,22 +30,22 @@
     <main class="terminal-content app-content">
         
         <!-- App Tabs -->
-        <div class="app-tabs">
-            <button class="app-tab active" data-tab="create">
+        <div class="app-tabs" role="tablist" aria-label="Policy management options">
+            <button class="app-tab active" data-tab="create" role="tab" aria-selected="true" aria-controls="tab-create" id="tab-btn-create">
                 <span class="tab-prompt">$</span> create_policy
             </button>
-            <button class="app-tab" data-tab="lookup">
+            <button class="app-tab" data-tab="lookup" role="tab" aria-selected="false" aria-controls="tab-lookup" id="tab-btn-lookup">
                 <span class="tab-prompt">$</span> lookup_policy
             </button>
-            <button class="app-tab" data-tab="pool">
+            <button class="app-tab" data-tab="pool" role="tab" aria-selected="false" aria-controls="tab-pool" id="tab-btn-pool">
                 <span class="tab-prompt">$</span> pool_stats
             </button>
         </div>
 
         <!-- Create Policy Tab -->
-        <section id="tab-create" class="app-tab-content active">
+        <section id="tab-create" class="app-tab-content active" role="tabpanel" aria-labelledby="tab-btn-create">
             <div class="content-box">
-                <div class="box-header">[CREATE COVERAGE POLICY - VRF ANONYMOUS] <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 11px; margin-left: 15px;">[feedback]</a></div>
+                <div class="box-header">[CREATE COVERAGE POLICY - VRF ANONYMOUS] <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="feedback-link ml-15">[feedback]</a></div>
                 <div class="box-content">
                     
                     <!-- Wallet Address Input -->
@@ -77,7 +77,7 @@
                     </div>
 
                     <!-- Token Info Display -->
-                    <div id="tokenInfo" class="token-info-panel" style="display: none;">
+                    <div id="tokenInfo" class="token-info-panel d-none">
                         <div class="info-grid">
                             <div class="info-item">
                                 <span class="info-label">Token:</span>
@@ -122,7 +122,7 @@
 
                     <!-- Coverage Level -->
                     <div class="app-form-group">
-                        <label class="form-label">$ select_coverage --level= <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 10px; margin-left: 10px;">[feedback on options]</a></label>
+                        <label class="form-label">$ select_coverage --level= <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="feedback-link-small ml-10">[feedback on options]</a></label>
                         <div class="coverage-options">
                             <label class="coverage-option">
                                 <input type="radio" name="coverage" value="3000" id="coverage30">
@@ -172,7 +172,7 @@
 
                     <!-- Premium Calculation -->
                     <div class="premium-panel">
-                        <div class="premium-header">[PREMIUM CALCULATION] <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 10px; margin-left: 10px;">[feedback on pricing]</a></div>
+                        <div class="premium-header">[PREMIUM CALCULATION] <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="feedback-link-small ml-10">[feedback on pricing]</a></div>
                         <div class="premium-breakdown">
                             <div class="premium-row">
                                 <span>Base Premium:</span>
@@ -202,7 +202,7 @@
                         $ ./create_policy_vrf.sh
                     </button>
 
-                    <div class="form-hint" style="margin-top: 20px;">
+                    <div class="form-hint mt-20">
                         <strong>How VRF Enrollment Works:</strong>
                         <br>• No wallet connection required
                         <br>• Policy ID generated via Chainlink VRF (verifiable randomness)
@@ -214,13 +214,13 @@
                         <br>• Liquidity drain: >50% liquidity loss in 24h
                         <br>• Dev wallet dump: >10% supply sold by major holder
                         <br><br>
-                        <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; text-decoration: underline;">→ Have questions? Submit feedback</a>
+                        <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="feedback-nav-link text-decoration-underline">→ Have questions? Submit feedback</a>
                     </div>
 
                     <!-- Policy Created Success Modal (hidden by default) -->
-                    <div id="policyCreatedModal" class="policy-modal" style="display: none;">
+                    <div id="policyCreatedModal" class="policy-modal d-none" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle">
                         <div class="modal-content-policy">
-                            <div class="box-header">[POLICY CREATED SUCCESSFULLY]</div>
+                            <div class="box-header" id="policyModalTitle">[POLICY CREATED SUCCESSFULLY]</div>
                             <div class="policy-details-success">
                                 <div class="success-message">
                                     ✓ Your coverage policy has been created!
@@ -256,7 +256,7 @@
                                     </button>
                                 </div>
 
-                                <div class="form-checkbox" style="margin-top: 20px;">
+                                <div class="form-checkbox mt-20">
                                     <input type="checkbox" id="backupConfirm" required>
                                     <label for="backupConfirm">[ ] I have securely backed up my policy credentials</label>
                                 </div>
@@ -273,7 +273,7 @@
         </section>
 
         <!-- Lookup Policy Tab -->
-        <section id="tab-lookup" class="app-tab-content">
+        <section id="tab-lookup" class="app-tab-content" role="tabpanel" aria-labelledby="tab-btn-lookup">
             <div class="content-box">
                 <div class="box-header">[LOOKUP YOUR POLICY]</div>
                 <div class="box-content">
@@ -306,7 +306,7 @@
                     </div>
 
                     <!-- Policy Display Container -->
-                    <div id="policiesContainer" style="margin-top: 30px;">
+                    <div id="policiesContainer" class="mt-30">
                         <!-- Policy will be displayed here after lookup -->
                         <div class="empty-state">
                             <p class="mono-text">
@@ -373,7 +373,7 @@
         </section>
 
         <!-- Pool Stats Tab -->
-        <section id="tab-pool" class="app-tab-content">
+        <section id="tab-pool" class="app-tab-content" role="tabpanel" aria-labelledby="tab-btn-pool">
             <div class="content-box">
                 <div class="box-header">[PROTOCOL STATISTICS]</div>
                 <div class="box-content">
@@ -405,17 +405,17 @@
                         </div>
                     </div>
 
-                    <div class="pool-chart-container" style="margin-top: 40px;">
+                    <div class="pool-chart-container mt-40">
                         <div class="chart-header">[POOL RESERVES CHART]</div>
                         <div class="chart-placeholder">
                             <p class="mono-text">Chart visualization coming soon...</p>
-                            <p class="mono-text" style="margin-top: 10px;">
-                                <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00;">[feedback on pool stats]</a>
+                            <p class="mono-text mt-10">
+                                <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="feedback-nav-link">[feedback on pool stats]</a>
                             </p>
                         </div>
                     </div>
 
-                    <div class="recent-activity" style="margin-top: 40px;">
+                    <div class="recent-activity mt-40">
                         <div class="activity-header">[RECENT ACTIVITY]</div>
                         <div id="activityFeed" class="activity-feed">
                             <div class="activity-item">
