@@ -31,9 +31,9 @@ jobs:
       - name: Prepare deployment files
         run: |
           mkdir -p _site
-          cp index.html docs.html app.html _site/
-          cp script.js app.js styles.css _site/
-          cp logo.png favicon.png _site/
+          cp web/index.html web/docs.html web/app.html _site/
+          cp web/script.js web/app.js web/styles.css _site/
+          cp web/logo.png web/favicon.png _site/
           cp CNAME .nojekyll _site/
       
       - name: Upload artifact

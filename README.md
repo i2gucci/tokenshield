@@ -21,6 +21,39 @@ Token Shield provides automated, oracle-verified coverage for meme coins, Pump.f
 - **Documentation:** [tokenshield.fun/docs](https://tokenshield.fun/docs)
 - **Try Interface:** [tokenshield.fun/app](https://tokenshield.fun/app) *(demo only)*
 
+## Repository Structure
+
+```
+token-shield/
+├── web/                  # Frontend website files
+│   ├── index.html        # Landing page
+│   ├── docs.html         # Documentation
+│   ├── app.html          # Policy interface
+│   ├── styles.css        # Styling
+│   ├── script.js         # UI interactions
+│   └── app.js           # Policy logic
+├── programs/             # Solana smart contracts (Anchor/Rust)
+├── tests/               # Smart contract tests
+├── CNAME                # Custom domain config
+└── README.md            # This file
+```
+
+## Current Status
+
+**⚠️ Pre-Alpha Development - Not Production Ready**
+
+Token Shield is in active development. Smart contracts have **NOT been audited**. Do not use with real funds.
+
+- ✅ Concept & Documentation
+- ✅ Website & Landing Page  
+- ⏳ Smart Contract Development (Q2 2026)
+- ⏳ Testnet Launch (Q3 2026)
+- ⏳ Security Audits (Q3 2026)
+- ⏳ Mainnet Launch (Q4 2026)
+
+## Disclaimer
+
+This is an experimental DeFi protocol. Smart contracts are unaudited. Use at your own risk. Not financial advice. DYOR.
 
 ---
 
