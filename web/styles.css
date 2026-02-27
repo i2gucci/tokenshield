@@ -11,13 +11,13 @@ html {
 
 :root {
     --terminal-bg: #000000;
-    --terminal-fg: #00ff00;
+    --terminal-fg: #00dd00;
     --terminal-white: #ffffff;
     --terminal-gray: #808080;
     --terminal-red: #ff0000;
-    --terminal-success: #00ff00;
+    --terminal-success: #00dd00;
     --terminal-info: #00ffff;
-    --border: #00ff00;
+    --border: #00dd00;
 }
 
 /* Focus visible for accessibility */
@@ -254,7 +254,7 @@ body.terminal-mode {
     margin: 0;
     padding: 15px;
     border: 2px solid var(--border);
-    background: rgba(0, 255, 0, 0.02);
+    background: rgba(0, 221, 0, 0.02);
 }
 
 .hero-ctas .terminal-button {
@@ -504,7 +504,7 @@ body.terminal-mode {
     background: var(--terminal-fg);
     color: var(--terminal-bg);
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 221, 0, 0.2);
 }
 
 .terminal-button:focus {
@@ -798,7 +798,7 @@ body.terminal-mode {
 
 .timeline-item.current {
     border-color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
 }
 
 .timeline-date {
@@ -838,7 +838,7 @@ body.terminal-mode {
 }
 
 .team-feature-box .box-header {
-    background: rgba(0, 255, 0, 0.1);
+    background: rgba(0, 221, 0, 0.1);
     border-bottom: 1px solid var(--border);
     padding: 8px 15px;
     color: var(--terminal-fg);
@@ -955,7 +955,7 @@ body.terminal-mode {
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 0 50px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 50px rgba(0, 221, 0, 0.3);
 }
 
 .modal-window .window-header {
@@ -1260,13 +1260,13 @@ body.terminal-mode {
 
 .sidebar-link:hover {
     color: var(--terminal-white);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
     border-left-color: var(--terminal-fg);
 }
 
 .sidebar-link.active {
     color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.1);
+    background: rgba(0, 221, 0, 0.1);
     border-left-color: var(--terminal-fg);
 }
 
@@ -1356,7 +1356,7 @@ body.terminal-mode {
 
 .doc-callout {
     border: 1px solid var(--border);
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(0, 221, 0, 0.03);
     margin: 20px 0;
     padding: 0;
 }
@@ -1455,7 +1455,7 @@ body.terminal-mode {
 }
 
 .doc-table tr:hover {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
 }
 
 .doc-footer {
@@ -1528,7 +1528,7 @@ body.terminal-mode {
 
 .docs-main .callout:not(.doc-callout) {
     border: 1px solid var(--border);
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(0, 221, 0, 0.03);
     padding: 15px;
     margin: 20px 0;
 }
@@ -1609,7 +1609,7 @@ body.terminal-mode {
 
 .app-tab:hover {
     color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
 }
 
 .app-tab.active {
@@ -1661,7 +1661,7 @@ body.terminal-mode {
 
 .terminal-input:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 0 2px rgba(0, 221, 0, 0.3);
 }
 
 .terminal-input::placeholder {
@@ -1677,7 +1677,7 @@ body.terminal-mode {
 
 /* Token Info Panel */
 .token-info-panel {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
     border: 1px solid var(--border);
     padding: 15px;
     margin-top: 15px;
@@ -1753,7 +1753,7 @@ body.terminal-mode {
 
 .coverage-option input:checked + .coverage-label {
     border-color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
 }
 
 .coverage-percent {
@@ -1806,7 +1806,7 @@ body.terminal-mode {
 
 /* Premium Panel */
 .premium-panel {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
     border: 1px solid var(--border);
     padding: 20px;
     margin: 30px 0;
@@ -1904,7 +1904,7 @@ body.terminal-mode {
 }
 
 .policy-card {
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(0, 221, 0, 0.03);
     border: 1px solid var(--border);
     padding: 20px;
 }
@@ -2007,7 +2007,7 @@ body.terminal-mode {
 }
 
 .stat-card {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
     border: 1px solid var(--border);
     padding: 20px;
     text-align: center;
@@ -2029,7 +2029,7 @@ body.terminal-mode {
 
 /* Chart Placeholder */
 .pool-chart-container {
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(0, 221, 0, 0.03);
     border: 1px solid var(--border);
     padding: 20px;
 }
@@ -2054,7 +2054,7 @@ body.terminal-mode {
 
 /* Activity Feed */
 .recent-activity {
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(0, 221, 0, 0.03);
     border: 1px solid var(--border);
     padding: 20px;
 }
@@ -2138,7 +2138,7 @@ body.terminal-mode {
 }
 
 .credential-value {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
     border: 1px solid var(--border);
     padding: 15px;
     font-family: 'IBM Plex Mono', monospace;
@@ -2323,7 +2323,7 @@ body.terminal-mode {
 }
 
 .feedback-cta-section {
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(0, 221, 0, 0.03);
     border: 2px solid #00ff00;
     margin: 40px auto;
     max-width: 900px;
@@ -2333,7 +2333,7 @@ body.terminal-mode {
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #00ff00;
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(0, 221, 0, 0.05);
     margin-bottom: 20px;
 }
 
