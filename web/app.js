@@ -161,25 +161,64 @@ async function lookupToken(mintAddress) {
             liquidity: 2500000
         };
 
+        // Calculate risk score (matches smart contract logic)
+        const riskScore = calculateRiskScore(mockTokenData);
+        mockTokenData.riskScore = riskScore;
+
         appState.tokenInfo = mockTokenData;
         validateForm();
         
-        // Display token info
+        // Display token info with risk score
         const tokenInfoDiv = document.getElementById('tokenInfo');
+        const riskColor = riskScore <= 4 ? '#00ff00' : riskScore <= 7 ? '#ffff00' : '#ff6b6b';
         tokenInfoDiv.innerHTML = `
             <div class="token-info-display">
                 <h3>${mockTokenData.name} (${mockTokenData.symbol})</h3>
                 <p>Price: $${mockTokenData.price.toFixed(6)}</p>
                 <p>24h Change: ${mockTokenData.change24h}%</p>
                 <p>Liquidity: $${mockTokenData.liquidity.toLocaleString()}</p>
+                <p style="color: ${riskColor}">Risk Score: ${riskScore}/10 ${getRiskLabel(riskScore)}</p>
             </div>
         `;
         tokenInfoDiv.style.display = 'block';
+        
+        // Update premium calculation with new risk score
+        updatePremiumCalculation();
         
     } catch (error) {
         console.error('Failed to lookup token:', error);
         document.getElementById('tokenInfo').style.display = 'none';
     }
+}
+
+function calculateRiskScore(tokenData) {
+    // Replicate smart contract risk score logic (utils.rs lines 28-54)
+    let score = 5; // Base score
+    
+    // Liquidity risk
+    if (tokenData.liquidity < 500000) {
+        score += 2; // Very low liquidity
+    } else if (tokenData.liquidity < 2000000) {
+        score += 1; // Low liquidity
+    }
+    
+    // Volatility risk (24h price change)
+    const absChange = Math.abs(tokenData.change24h);
+    if (absChange > 50) {
+        score += 2; // Extreme volatility
+    } else if (absChange > 20) {
+        score += 1; // High volatility
+    }
+    
+    // Cap at 1-10 range
+    return Math.max(1, Math.min(10, score));
+}
+
+function getRiskLabel(score) {
+    if (score <= 3) return '(Low Risk)';
+    if (score <= 6) return '(Moderate Risk)';
+    if (score <= 8) return '(High Risk)';
+    return '(Very High Risk)';
 }
 
 async function createPolicy() {
@@ -376,18 +415,27 @@ function displayPolicy(policy) {
 function updatePremiumCalculation() {
     const positionSize = parseFloat(document.getElementById('positionSize').value) || 0;
     const coverageLevel = parseInt(document.querySelector('input[name="coverage"]:checked').value) || 50;
-    const duration = parseInt(document.getElementById('duration').value) || 12;
+    const duration = parseInt(document.getElementById('duration').value) || 14;
 
-    // Calculate premium based on position size and coverage
-    const basePremium = positionSize * 0.01;
-    const riskMultiplier = coverageLevel / 50;
-    const durationFactor = duration / 12;
-    const totalPremium = basePremium * riskMultiplier * durationFactor;
-    const maxPayout = totalPremium * 5.75;
+    // Get risk score from token info (default to 6 if not available)
+    const riskScore = appState.tokenInfo?.riskScore || 6;
+    
+    // Smart contract formula: Premium = PositionValue × CoverageLevel × (Duration/30) × RiskScore × BaseRate(2%)
+    const BASE_RATE = 0.02; // 2% (200 basis points)
+    
+    const coverageFactor = coverageLevel / 100;
+    const durationFactor = duration / 30; // Normalize to 30 days (not 12)
+    const basePremium = positionSize * BASE_RATE;
+    
+    // Calculate total premium (matches smart contract)
+    const totalPremium = positionSize * coverageFactor * durationFactor * riskScore * BASE_RATE;
+    
+    // Max payout is the covered amount (not a multiplier of premium)
+    const maxPayout = positionSize * coverageFactor;
 
     // Update UI
     document.getElementById('basePremium').textContent = `${basePremium.toFixed(2)} USDC`;
-    document.getElementById('riskMultiplier').textContent = `${riskMultiplier.toFixed(2)}x`;
+    document.getElementById('riskMultiplier').textContent = `${riskScore}x`;
     document.getElementById('durationFactor').textContent = `${durationFactor.toFixed(2)}x`;
     document.getElementById('totalPremium').textContent = `${totalPremium.toFixed(2)} USDC`;
     document.getElementById('maxPayout').textContent = `${maxPayout.toFixed(2)} USDC`;
