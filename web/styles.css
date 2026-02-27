@@ -10,14 +10,15 @@ html {
 }
 
 :root {
-    --terminal-bg: #000000;
-    --terminal-fg: #00ff00;
-    --terminal-white: #ffffff;
-    --terminal-gray: #808080;
-    --terminal-red: #ff0000;
-    --terminal-success: #00ff00;
-    --terminal-info: #00ffff;
-    --border: #00ff00;
+    --terminal-bg: #1e1e1e;
+    --terminal-fg: #6a9955;
+    --terminal-white: #d4d4d4;
+    --terminal-gray: #6a6a6a;
+    --terminal-red: #f48771;
+    --terminal-success: #4ec9b0;
+    --terminal-info: #4fc1ff;
+    --border: #3e3e42;
+    --border-accent: #6a9955;
 }
 
 /* Focus visible for accessibility */
@@ -36,8 +37,8 @@ body {
 }
 
 body.terminal-mode {
-    background: #000;
-    color: #00ff00;
+    background: var(--terminal-bg);
+    color: var(--terminal-fg);
 }
 
 /* ASCII Header */
@@ -161,7 +162,7 @@ body.terminal-mode {
 
 .hero-box {
     border: 2px solid var(--border);
-    background: #000;
+    background: var(--terminal-bg);
     height: 100%;
     overflow: hidden;
     display: flex;
@@ -170,7 +171,7 @@ body.terminal-mode {
 
 .hero-box .box-header {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     padding: 6px 15px;
     font-weight: 700;
     font-size: 13px;
@@ -254,7 +255,7 @@ body.terminal-mode {
     margin: 0;
     padding: 15px;
     border: 2px solid var(--border);
-    background: rgba(0, 255, 0, 0.02);
+    background: rgba(106, 153, 85, 0.02);
 }
 
 .hero-ctas .terminal-button {
@@ -265,35 +266,36 @@ body.terminal-mode {
 
 .hero-ctas .terminal-button.primary {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     border: 2px solid var(--terminal-fg);
 }
 
 .hero-ctas .terminal-button.primary:hover {
-    background: #000;
+    background: var(--terminal-bg);
     color: var(--terminal-fg);
+    opacity: 0.9;
 }
 
 .hero-ctas .terminal-button.secondary {
-    background: #000;
+    background: var(--terminal-bg);
     color: var(--terminal-info);
     border: 2px solid var(--terminal-info);
 }
 
 .hero-ctas .terminal-button.secondary:hover {
     background: var(--terminal-info);
-    color: #000;
+    color: var(--terminal-bg);
 }
 
 .hero-ctas .terminal-button.tertiary {
-    background: #000;
+    background: var(--terminal-bg);
     color: var(--terminal-gray);
     border: 2px solid var(--terminal-gray);
 }
 
 .hero-ctas .terminal-button.tertiary:hover {
     background: var(--terminal-gray);
-    color: #000;
+    color: var(--terminal-bg);
 }
 
 /* What is Token Shield Section */
@@ -333,12 +335,12 @@ body.terminal-mode {
 
 .terminal-window {
     border: 1px solid var(--border);
-    background: #000;
+    background: var(--terminal-bg);
 }
 
 .window-header {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     padding: 6px 12px;
     display: flex;
     justify-content: space-between;
@@ -437,7 +439,7 @@ body.terminal-mode {
 
 .cta-box {
     border: 1px solid var(--border);
-    background: #000;
+    background: var(--terminal-bg);
 }
 
 .cta-primary {
@@ -458,12 +460,12 @@ body.terminal-mode {
 
 .cta-primary .cta-header {
     background: var(--terminal-success);
-    color: #000;
+    color: var(--terminal-bg);
 }
 
 .cta-secondary .cta-header {
     background: var(--terminal-info);
-    color: #000;
+    color: var(--terminal-bg);
 }
 
 .cta-content {
@@ -481,7 +483,7 @@ body.terminal-mode {
 }
 
 .terminal-button {
-    background: #000;
+    background: var(--terminal-bg);
     border: 2px solid var(--border);
     color: var(--terminal-fg);
     padding: 8px 12px;
@@ -501,9 +503,9 @@ body.terminal-mode {
 
 .terminal-button:hover {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(106, 153, 85, 0.2);
 }
 
 .terminal-button:focus {
@@ -519,23 +521,23 @@ body.terminal-mode {
 .cta-primary .terminal-button {
     border-color: var(--terminal-success);
     color: var(--terminal-success);
-    background: #000;
+    background: var(--terminal-bg);
 }
 
 .cta-primary .terminal-button:hover {
     background: var(--terminal-success);
-    color: #000;
+    color: var(--terminal-bg);
 }
 
 .cta-secondary .terminal-button {
     border-color: var(--terminal-info);
     color: var(--terminal-info);
-    background: #000;
+    background: var(--terminal-bg);
 }
 
 .cta-secondary .terminal-button:hover {
     background: var(--terminal-info);
-    color: #000;
+    color: var(--terminal-bg);
 }
 
 .btn-prompt {
@@ -567,12 +569,12 @@ body.terminal-mode {
 .content-box {
     border: 2px solid var(--border);
     margin-bottom: 40px;
-    background: #000;
+    background: var(--terminal-bg);
 }
 
 .box-header {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     padding: 8px 16px;
     font-weight: 700;
     text-transform: uppercase;
@@ -744,7 +746,7 @@ body.terminal-mode {
 
 .spec-header {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     padding: 8px 16px;
     font-weight: 700;
 }
@@ -797,7 +799,7 @@ body.terminal-mode {
 
 .timeline-item.current {
     border-color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
 }
 
 .timeline-date {
@@ -833,11 +835,11 @@ body.terminal-mode {
 
 .team-feature-box {
     border: 1px solid var(--border);
-    background: #000;
+    background: var(--terminal-bg);
 }
 
 .team-feature-box .box-header {
-    background: rgba(0, 255, 0, 0.1);
+    background: rgba(106, 153, 85, 0.1);
     border-bottom: 1px solid var(--border);
     padding: 8px 15px;
     color: var(--terminal-fg);
@@ -893,7 +895,7 @@ body.terminal-mode {
 .terminal-input {
     width: 100%;
     max-width: 500px;
-    background: #000;
+    background: var(--terminal-bg);
     border: 1px solid var(--border);
     color: var(--terminal-white);
     padding: 10px 15px;
@@ -949,12 +951,12 @@ body.terminal-mode {
     position: relative;
     z-index: 10000;
     border: 2px solid var(--border);
-    background: #000;
+    background: var(--terminal-bg);
     max-width: 600px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 0 50px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 50px rgba(106, 153, 85, 0.3);
 }
 
 .modal-window .window-header {
@@ -1183,7 +1185,7 @@ body.terminal-mode {
     border-bottom: 2px solid var(--border);
     position: sticky;
     top: 0;
-    background: #000;
+    background: var(--terminal-bg);
     z-index: 100;
 }
 
@@ -1225,7 +1227,7 @@ body.terminal-mode {
 }
 
 .docs-sidebar {
-    background: #000;
+    background: var(--terminal-bg);
     border-right: 1px solid var(--border);
     padding: 20px;
     overflow-y: auto;
@@ -1259,13 +1261,13 @@ body.terminal-mode {
 
 .sidebar-link:hover {
     color: var(--terminal-white);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
     border-left-color: var(--terminal-fg);
 }
 
 .sidebar-link.active {
     color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.1);
+    background: rgba(106, 153, 85, 0.1);
     border-left-color: var(--terminal-fg);
 }
 
@@ -1355,7 +1357,7 @@ body.terminal-mode {
 
 .doc-callout {
     border: 1px solid var(--border);
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(106, 153, 85, 0.03);
     margin: 20px 0;
     padding: 0;
 }
@@ -1372,7 +1374,7 @@ body.terminal-mode {
 
 .callout-header {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     padding: 6px 12px;
     font-size: 11px;
     font-weight: 700;
@@ -1400,7 +1402,7 @@ body.terminal-mode {
 
 .example-header {
     background: var(--terminal-gray);
-    color: #000;
+    color: var(--terminal-bg);
     padding: 6px 12px;
     font-size: 11px;
     font-weight: 700;
@@ -1439,7 +1441,7 @@ body.terminal-mode {
 
 .doc-table th {
     background: var(--terminal-fg);
-    color: #000;
+    color: var(--terminal-bg);
     padding: 10px;
     text-align: left;
     font-weight: 700;
@@ -1454,7 +1456,7 @@ body.terminal-mode {
 }
 
 .doc-table tr:hover {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
 }
 
 .doc-footer {
@@ -1527,7 +1529,7 @@ body.terminal-mode {
 
 .docs-main .callout:not(.doc-callout) {
     border: 1px solid var(--border);
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(106, 153, 85, 0.03);
     padding: 15px;
     margin: 20px 0;
 }
@@ -1608,7 +1610,7 @@ body.terminal-mode {
 
 .app-tab:hover {
     color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
 }
 
 .app-tab.active {
@@ -1660,7 +1662,7 @@ body.terminal-mode {
 
 .terminal-input:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 0 2px rgba(106, 153, 85, 0.3);
 }
 
 .terminal-input::placeholder {
@@ -1676,7 +1678,7 @@ body.terminal-mode {
 
 /* Token Info Panel */
 .token-info-panel {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
     border: 1px solid var(--border);
     padding: 15px;
     margin-top: 15px;
@@ -1752,7 +1754,7 @@ body.terminal-mode {
 
 .coverage-option input:checked + .coverage-label {
     border-color: var(--terminal-fg);
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
 }
 
 .coverage-percent {
@@ -1805,7 +1807,7 @@ body.terminal-mode {
 
 /* Premium Panel */
 .premium-panel {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
     border: 1px solid var(--border);
     padding: 20px;
     margin: 30px 0;
@@ -1903,7 +1905,7 @@ body.terminal-mode {
 }
 
 .policy-card {
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(106, 153, 85, 0.03);
     border: 1px solid var(--border);
     padding: 20px;
 }
@@ -2006,7 +2008,7 @@ body.terminal-mode {
 }
 
 .stat-card {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
     border: 1px solid var(--border);
     padding: 20px;
     text-align: center;
@@ -2028,7 +2030,7 @@ body.terminal-mode {
 
 /* Chart Placeholder */
 .pool-chart-container {
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(106, 153, 85, 0.03);
     border: 1px solid var(--border);
     padding: 20px;
 }
@@ -2053,7 +2055,7 @@ body.terminal-mode {
 
 /* Activity Feed */
 .recent-activity {
-    background: rgba(0, 255, 0, 0.03);
+    background: rgba(106, 153, 85, 0.03);
     border: 1px solid var(--border);
     padding: 20px;
 }
@@ -2137,7 +2139,7 @@ body.terminal-mode {
 }
 
 .credential-value {
-    background: rgba(0, 255, 0, 0.05);
+    background: rgba(106, 153, 85, 0.05);
     border: 1px solid var(--border);
     padding: 15px;
     font-family: 'IBM Plex Mono', monospace;
@@ -2322,7 +2324,7 @@ body.terminal-mode {
 }
 
 .feedback-cta-section {
-    background: rgba(0,255,0,0.03);
+    background: rgba(106, 153, 85, 0.03);
     border: 2px solid #00ff00;
     margin: 40px auto;
     max-width: 900px;
@@ -2332,7 +2334,7 @@ body.terminal-mode {
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #00ff00;
-    background: rgba(0,255,0,0.05);
+    background: rgba(106, 153, 85, 0.05);
     margin-bottom: 20px;
 }
 
