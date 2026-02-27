@@ -150,34 +150,66 @@ async function lookupToken(mintAddress) {
         return;
     }
 
+    const tokenInfoDiv = document.getElementById('tokenInfo');
+    
+    // Show loading state
+    tokenInfoDiv.innerHTML = '<div class="token-info-display"><p>$ loading token data...</p></div>';
+    tokenInfoDiv.style.display = 'block';
+
     try {
-        // TODO: Replace with actual Solana RPC call
-        // For now, use mock data
-        const mockTokenData = {
-            name: 'Example Token',
-            symbol: 'EXAMPLE',
-            price: 0.123456,
-            change24h: -12.5,
-            liquidity: 2500000
+        // Fetch real-time data from DexScreener (free, no API key needed)
+        const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${mintAddress}`);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch token data');
+        }
+        
+        const data = await response.json();
+        
+        // Check if token has any trading pairs
+        if (!data.pairs || data.pairs.length === 0) {
+            tokenInfoDiv.innerHTML = '<div class="token-info-display"><p style="color: #ff6b6b">Token not found or has no liquidity pools</p></div>';
+            appState.tokenInfo = null;
+            validateForm();
+            return;
+        }
+        
+        // Get the pair with highest liquidity (usually first one)
+        const mainPair = data.pairs.reduce((max, pair) => 
+            (pair.liquidity?.usd || 0) > (max.liquidity?.usd || 0) ? pair : max
+        );
+        
+        // Extract token data
+        const tokenData = {
+            name: mainPair.baseToken.name || 'Unknown Token',
+            symbol: mainPair.baseToken.symbol || 'UNKNOWN',
+            price: parseFloat(mainPair.priceUsd) || 0,
+            change24h: parseFloat(mainPair.priceChange?.h24) || 0,
+            liquidity: parseFloat(mainPair.liquidity?.usd) || 0,
+            volume24h: parseFloat(mainPair.volume?.h24) || 0,
+            marketCap: parseFloat(mainPair.fdv) || 0,
+            dexName: mainPair.dexId || 'Unknown DEX',
+            pairAddress: mainPair.pairAddress
         };
 
         // Calculate risk score (matches smart contract logic)
-        const riskScore = calculateRiskScore(mockTokenData);
-        mockTokenData.riskScore = riskScore;
+        const riskScore = calculateRiskScore(tokenData);
+        tokenData.riskScore = riskScore;
 
-        appState.tokenInfo = mockTokenData;
+        appState.tokenInfo = tokenData;
         validateForm();
         
         // Display token info with risk score
-        const tokenInfoDiv = document.getElementById('tokenInfo');
         const riskColor = riskScore <= 4 ? '#00ff00' : riskScore <= 7 ? '#ffff00' : '#ff6b6b';
         tokenInfoDiv.innerHTML = `
             <div class="token-info-display">
-                <h3>${mockTokenData.name} (${mockTokenData.symbol})</h3>
-                <p>Price: $${mockTokenData.price.toFixed(6)}</p>
-                <p>24h Change: ${mockTokenData.change24h}%</p>
-                <p>Liquidity: $${mockTokenData.liquidity.toLocaleString()}</p>
-                <p style="color: ${riskColor}">Risk Score: ${riskScore}/10 ${getRiskLabel(riskScore)}</p>
+                <h3>${tokenData.name} (${tokenData.symbol})</h3>
+                <p>Price: $${tokenData.price < 0.01 ? tokenData.price.toFixed(8) : tokenData.price.toFixed(6)}</p>
+                <p style="color: ${tokenData.change24h >= 0 ? '#00ff00' : '#ff6b6b'}">24h Change: ${tokenData.change24h.toFixed(2)}%</p>
+                <p>Liquidity: $${tokenData.liquidity.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
+                <p>24h Volume: $${tokenData.volume24h.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
+                <p>DEX: ${tokenData.dexName}</p>
+                <p style="color: ${riskColor}; font-weight: bold;">Risk Score: ${riskScore}/10 ${getRiskLabel(riskScore)}</p>
             </div>
         `;
         tokenInfoDiv.style.display = 'block';
@@ -187,7 +219,9 @@ async function lookupToken(mintAddress) {
         
     } catch (error) {
         console.error('Failed to lookup token:', error);
-        document.getElementById('tokenInfo').style.display = 'none';
+        tokenInfoDiv.innerHTML = '<div class="token-info-display"><p style="color: #ff6b6b">Error: Unable to fetch token data. Please check the address and try again.</p></div>';
+        appState.tokenInfo = null;
+        validateForm();
     }
 }
 
