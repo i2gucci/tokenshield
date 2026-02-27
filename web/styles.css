@@ -112,7 +112,7 @@ body.terminal-mode {
 
 .nav-link-cmd::before {
     content: '→ ';
-    color: var(--terminal-fg);
+    color: inherit;
     transition: all 0.2s ease;
 }
 
@@ -2203,6 +2203,21 @@ body.terminal-mode {
 
 .feedback-nav-link {
     color: #00dd00 !important;
+}
+
+/* Feedback link contrast fixes - prevent green on green */
+.box-header .feedback-link,
+.box-header .feedback-link-small {
+    color: var(--terminal-white) !important;
+    text-decoration: underline;
+}
+
+.form-label .feedback-link,
+.form-label .feedback-link-small,
+.premium-header .feedback-link,
+.premium-header .feedback-link-small {
+    color: var(--terminal-white) !important;
+    text-decoration: underline;
 }
 
 /* Spacing Utilities */
