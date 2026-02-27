@@ -134,14 +134,27 @@ function initializeCreatePolicyForm() {
 
 function validateForm() {
     const walletAddress = document.getElementById('walletAddress').value;
-    const positionSize = parseFloat(document.getElementById('positionSize').value) || 0;
+    const tokenCount = parseFloat(document.getElementById('positionSize').value) || 0;
+    const tokenPrice = appState.tokenInfo?.price || 0;
+    const positionValueUSD = tokenCount * tokenPrice;
     const createButton = document.getElementById('createPolicy');
 
     // Basic Solana address validation (32-44 characters, base58)
     const isValidAddress = walletAddress.length >= 32 && walletAddress.length <= 44;
-    const hasValidPosition = positionSize > 0 && appState.tokenInfo;
+    const hasValidPosition = tokenCount > 0 && appState.tokenInfo;
+    const withinMaxValue = positionValueUSD <= 50000; // $50k max per policy
 
-    createButton.disabled = !(isValidAddress && hasValidPosition);
+    createButton.disabled = !(isValidAddress && hasValidPosition && withinMaxValue);
+    
+    // Show warning if over max
+    const positionUSDElement = document.getElementById('positionUSD');
+    if (positionValueUSD > 50000) {
+        positionUSDElement.style.color = '#ff6b6b';
+        positionUSDElement.title = 'Position value exceeds $50k maximum';
+    } else {
+        positionUSDElement.style.color = '';
+        positionUSDElement.title = '';
+    }
 }
 
 async function lookupToken(mintAddress) {
@@ -263,9 +276,13 @@ async function createPolicy() {
     try {
         const walletAddress = document.getElementById('walletAddress').value;
         const tokenMint = document.getElementById('tokenMint').value;
-        const positionSize = parseFloat(document.getElementById('positionSize').value);
+        const tokenCount = parseFloat(document.getElementById('positionSize').value);
         const coverageLevel = parseInt(document.querySelector('input[name="coverage"]:checked').value);
         const duration = parseInt(document.getElementById('duration').value);
+        
+        // Get token info for USD calculation
+        const tokenPrice = appState.tokenInfo.price;
+        const positionValueUSD = tokenCount * tokenPrice;
 
         // Generate VRF-based policy ID and secret (simulated - in production, use Chainlink VRF)
         const policyCredentials = generatePolicyCredentials();
@@ -280,7 +297,10 @@ async function createPolicy() {
             secret: policyCredentials.secret,
             walletAddress,
             tokenMint,
-            positionSize,
+            tokenCount,
+            tokenPrice,
+            positionValueUSD,
+            tokenSymbol: appState.tokenInfo.symbol,
             coverageLevel,
             duration,
             createdAt: new Date().toISOString()
@@ -447,9 +467,28 @@ function displayPolicy(policy) {
 }
 
 function updatePremiumCalculation() {
-    const positionSize = parseFloat(document.getElementById('positionSize').value) || 0;
+    const tokenCount = parseFloat(document.getElementById('positionSize').value) || 0;
     const coverageLevel = parseInt(document.querySelector('input[name="coverage"]:checked').value) || 50;
     const duration = parseInt(document.getElementById('duration').value) || 14;
+
+    // Get token price from live data
+    const tokenPrice = appState.tokenInfo?.price || 0;
+    
+    // Calculate position USD value: token count × token price
+    const positionValueUSD = tokenCount * tokenPrice;
+    
+    // Update position value display
+    document.getElementById('positionUSD').textContent = `$${positionValueUSD.toFixed(2)}`;
+    
+    // If no token selected or no position, clear premium
+    if (!appState.tokenInfo || tokenCount === 0) {
+        document.getElementById('basePremium').textContent = '-- USDC';
+        document.getElementById('riskMultiplier').textContent = '--';
+        document.getElementById('durationFactor').textContent = '--';
+        document.getElementById('totalPremium').textContent = '-- USDC';
+        document.getElementById('maxPayout').textContent = '-- USDC';
+        return;
+    }
 
     // Get risk score from token info (default to 6 if not available)
     const riskScore = appState.tokenInfo?.riskScore || 6;
@@ -459,13 +498,13 @@ function updatePremiumCalculation() {
     
     const coverageFactor = coverageLevel / 100;
     const durationFactor = duration / 30; // Normalize to 30 days (not 12)
-    const basePremium = positionSize * BASE_RATE;
+    const basePremium = positionValueUSD * BASE_RATE;
     
-    // Calculate total premium (matches smart contract)
-    const totalPremium = positionSize * coverageFactor * durationFactor * riskScore * BASE_RATE;
+    // Calculate total premium using USD value (matches smart contract)
+    const totalPremium = positionValueUSD * coverageFactor * durationFactor * riskScore * BASE_RATE;
     
     // Max payout is the covered amount (not a multiplier of premium)
-    const maxPayout = positionSize * coverageFactor;
+    const maxPayout = positionValueUSD * coverageFactor;
 
     // Update UI
     document.getElementById('basePremium').textContent = `${basePremium.toFixed(2)} USDC`;
