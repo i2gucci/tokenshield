@@ -22,6 +22,8 @@
             <a href="index.html" class="nav-link-cmd">← /home</a>
             <span class="nav-separator">|</span>
             <span class="nav-current">$ cat /docs/README.md</span>
+            <span class="nav-separator">|</span>
+            <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="nav-link-cmd" style="color: #00ff00;">/feedback</a>
         </nav>
     </header>
 
@@ -34,6 +36,7 @@
                 <a href="#introduction" class="sidebar-link active">→ Introduction</a>
                 <a href="#problem" class="sidebar-link">→ The Problem</a>
                 <a href="#solution" class="sidebar-link">→ Solution Overview</a>
+                <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="sidebar-link" style="color: #00ff00;">→ Give Feedback</a>
             </div>
             
             <div class="sidebar-section">
@@ -44,10 +47,11 @@
                 <a href="#triggers" class="sidebar-link">→ Claim Triggers</a>
                 <a href="#payouts" class="sidebar-link">→ Payout Process</a>
                 <a href="#pool" class="sidebar-link">→ Pool Sustainability</a>
+                <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="sidebar-link" style="color: #00ff00; font-size: 11px; margin-top: 10px;">[feedback on docs]</a>
             </div>
             
             <div class="sidebar-section">
-                <div class="sidebar-header">[TECHNICAL DETAILS]</div>
+                <div class="sidebar-header">[TECHNICAL DETAILS] <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 10px;">[feedback]</a></div>
                 <a href="#oracles" class="sidebar-link">→ Oracle Integration</a>
                 <a href="#smart-contracts" class="sidebar-link">→ Smart Contracts</a>
                 <a href="#privacy" class="sidebar-link">→ Privacy & ZK Proofs</a>
@@ -141,6 +145,7 @@
                     <div class="doc-callout">
                         <div class="callout-header">[PHILOSOPHY]</div>
                         <p class="doc-text"><strong>Token Shield doesn't try to eliminate risk</strong> (impossible in crypto). Instead, we provide a transparent, algorithmic way to cap downside while preserving upside, making it rational to hold conviction positions in high-risk assets.</p>
+                        <p class="doc-text" style="margin-top: 10px;"><a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00;">[feedback on approach]</a></p>
                     </div>
                 </div>
             </div>
@@ -150,7 +155,7 @@
             <p>Not all tokens qualify for Token Shield coverage. We use automated, on-chain criteria to identify genuinely high-risk assets that fit our protocol's risk profile.</p>
 
             <h3>Qualification Requirements</h3>
-            <p>A token must meet <strong>all</strong> of the following criteria to be eligible:</p>
+            <p>A token must meet <strong>all</strong> of the following criteria to be eligible: <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 11px;">[feedback on criteria]</a></p>
 
             <ol>
                 <li><strong>Volatility Threshold:</strong> 30-day standard deviation of returns >50% (measured via Pyth price oracles)</li>
@@ -171,7 +176,7 @@
                 <li>Social metrics (Twitter mentions, holder count - affects score)</li>
             </ul>
 
-            <p>This risk score directly impacts premium pricing. Higher risk = higher premiums, but also higher likelihood of payout events.</p>
+            <p>This risk score directly impacts premium pricing. Higher risk = higher premiums, but also higher likelihood of payout events. <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 11px;">[feedback on risk scoring]</a></p>
 
             <div class="doc-callout warning">
                 <div class="callout-header">[IMPORTANT]</div>
@@ -212,6 +217,7 @@ Where:
 - Duration: Days / 30 (normalized to monthly)
 - RiskScore: 1-10 (from eligibility assessment)
 - BaseRate: 0.02 (2% monthly base, DAO adjustable)</code></div>
+                    <p class="doc-text" style="margin-top: 10px; font-size: 12px;"><a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00;">[feedback on premium formula]</a></p>
 
                     <div class="doc-example">
                         <div class="example-header">[PREMIUM CALCULATION EXAMPLE]</div>
@@ -316,21 +322,21 @@ Per holder cost: $150,000 / 50 = $3,000 each</code></div>
             <h3>Trigger Events</h3>
             <p>Any of the following events will trigger automatic claim processing:</p>
 
-            <h4>1. Price Dump Trigger</h4>
+            <h4>1. Price Dump Trigger <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 11px;">[feedback]</a></h4>
             <ul>
                 <li><strong>Condition:</strong> Token price drops >40% within any rolling 24-hour window during coverage period</li>
                 <li><strong>Verification:</strong> Pyth oracle price feeds (requires 3 consecutive oracle updates confirming threshold)</li>
                 <li><strong>Example:</strong> $NEET trades at $0.50, drops to $0.28 over 18 hours → Trigger activated</li>
             </ul>
 
-            <h4>2. Liquidity Drain Trigger</h4>
+            <h4>2. Liquidity Drain Trigger <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 11px;">[feedback]</a></h4>
             <ul>
                 <li><strong>Condition:</strong> Total DEX liquidity drops >50% within any 24-hour window</li>
                 <li><strong>Verification:</strong> Jupiter aggregated liquidity data + individual DEX pool reserves</li>
                 <li><strong>Example:</strong> $NEET liquidity drops from $1.5M to $700k → Trigger activated</li>
             </ul>
 
-            <h4>3. Developer Wallet Dump Trigger</h4>
+            <h4>3. Developer Wallet Dump Trigger <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 11px;">[feedback]</a></h4>
             <ul>
                 <li><strong>Condition:</strong> Wallet(s) holding >5% of supply dumps >10% of total supply within 24 hours</li>
                 <li><strong>Verification:</strong> On-chain transaction monitoring of top holder wallets</li>
@@ -353,7 +359,7 @@ Where:
 - CoverageLevel: 0.3, 0.5, or 0.7
 - MaxPayout: PositionSize × CoverageLevel (payout cap)</code></pre>
 
-            <h4>Deductibles & Caps</h4>
+            <h4>Deductibles & Caps <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; font-size: 11px;">[feedback on policy]</a></h4>
             <ul>
                 <li><strong>Minimum Loss:</strong> 10% deductible (no payout if loss <10% of position)</li>
                 <li><strong>Maximum Payout:</strong> Capped at CoverageLevel × PositionSize (can't profit from coverage)</li>
@@ -382,6 +388,10 @@ Payout: $4,000 SOL to wallet ✅ (under cap)</code></pre>
 Event: Price drops 8% in volatile session
 ActualLoss: $800 (below 10% deductible)
 Payout: $0 ❌ (under minimum threshold)</code></pre>
+            </div>
+
+            <div style="margin-top: 20px; padding: 15px; border: 1px solid #00ff00; background: rgba(0,255,0,0.05);">
+                <p style="margin: 0;"><strong style="color: #00ff00;">💬 Questions about payout mechanics?</strong> <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" style="color: #00ff00; text-decoration: underline;">Submit feedback</a></p>
             </div>
 
             <!-- Pool Sustainability -->
