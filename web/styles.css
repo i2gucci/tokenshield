@@ -517,6 +517,32 @@ body.terminal-mode {
     box-shadow: none;
 }
 
+.terminal-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.terminal-button.small {
+    padding: 6px 12px;
+    font-size: 11px;
+}
+
+.terminal-button.large {
+    width: 100%;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.terminal-button.error {
+    border-color: var(--terminal-red);
+    color: var(--terminal-red);
+}
+
+.terminal-button.error:hover:not(:disabled) {
+    background: var(--terminal-red);
+    color: var(--terminal-bg);
+}
+
 .cta-primary .terminal-button {
     border-color: var(--terminal-success);
     color: var(--terminal-success);
@@ -1285,10 +1311,6 @@ body.terminal-mode {
     font-size: 13px;
 }
 
-.prompt {
-    color: var(--terminal-fg);
-}
-
 .doc-content {
     padding-left: 20px;
 }
@@ -1756,6 +1778,10 @@ body.terminal-mode {
     background: rgba(0, 221, 0, 0.05);
 }
 
+.coverage-option input:checked + .coverage-label .coverage-percent {
+    color: var(--terminal-white);
+}
+
 .coverage-percent {
     font-size: 24px;
     font-weight: 700;
@@ -1851,49 +1877,6 @@ body.terminal-mode {
 .premium-row.total span {
     color: var(--terminal-fg);
     font-weight: 700;
-}
-
-/* Buttons */
-.terminal-button {
-    background: transparent;
-    color: var(--terminal-fg);
-    border: 2px solid var(--terminal-fg);
-    padding: 12px 24px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.terminal-button:hover:not(:disabled) {
-    background: var(--terminal-fg);
-    color: var(--terminal-bg);
-}
-
-.terminal-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.terminal-button.small {
-    padding: 6px 12px;
-    font-size: 11px;
-}
-
-.terminal-button.large {
-    width: 100%;
-    padding: 15px;
-    font-size: 14px;
-}
-
-.terminal-button.error {
-    border-color: var(--terminal-red);
-    color: var(--terminal-red);
-}
-
-.terminal-button.error:hover:not(:disabled) {
-    background: var(--terminal-red);
-    color: var(--terminal-bg);
 }
 
 /* Policy Cards */
@@ -2204,22 +2187,22 @@ body.terminal-mode {
 
 /* Feedback Links */
 .feedback-link {
-    color: #00ff00 !important;
+    color: #00dd00 !important;
     font-size: 11px;
 }
 
 .feedback-link-small {
-    color: #00ff00 !important;
+    color: #00dd00 !important;
     font-size: 10px;
 }
 
 .feedback-link-inline {
-    color: #00ff00 !important;
+    color: #00dd00 !important;
     text-decoration: underline;
 }
 
 .feedback-nav-link {
-    color: #00ff00 !important;
+    color: #00dd00 !important;
 }
 
 /* Spacing Utilities */
@@ -2324,7 +2307,7 @@ body.terminal-mode {
 
 .feedback-cta-section {
     background: rgba(0, 221, 0, 0.03);
-    border: 2px solid #00ff00;
+    border: 2px solid #00dd00;
     margin: 40px auto;
     max-width: 900px;
 }
@@ -2332,7 +2315,7 @@ body.terminal-mode {
 .feedback-callout {
     margin-top: 20px;
     padding: 15px;
-    border: 1px solid #00ff00;
+    border: 1px solid #00dd00;
     background: rgba(0, 221, 0, 0.05);
     margin-bottom: 20px;
 }
@@ -2342,5 +2325,5 @@ body.terminal-mode {
 }
 
 .feedback-callout strong {
-    color: #00ff00;
+    color: #00dd00;
 }
