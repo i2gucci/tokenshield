@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Shield - DeFi Insurance for Degens</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="terminal-mode">
+    <!-- Logo Header -->
+    <header class="ascii-header">
+        <img src="logo.png" alt="Token Shield" class="logo-img">
+        <div class="tagline">[ DEFI INSURANCE FOR SOLANA DEGENS ]</div>
+        
+        <!-- Terminal Navigation -->
+        <nav class="terminal-nav">
+            <div class="nav-links-terminal">
+                <a href="#hero" class="nav-link-cmd">/home</a>
+                <a href="#how" class="nav-link-cmd">/how-it-works</a>
+                <a href="#specs" class="nav-link-cmd">/specs</a>
+                <a href="docs.html" class="nav-link-cmd">/docs</a>
+                <a href="app.html" class="nav-link-cmd">/app</a>
+                <a href="#contact" class="nav-link-cmd">/contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section: Problem/Solution -->
+    <main class="terminal-content">
+        <section class="hero-split" id="hero">
+            <div class="hero-columns">
+                <!-- Problem Column -->
+                <div class="hero-col hero-problem">
+                    <div class="hero-col-header">
+                        <span class="header-prompt">##</span>
+                        <h2 class="hero-col-title">THE PROBLEM</h2>
+                    </div>
+                    <div class="hero-box">
+                        <div class="box-header">[WHY THIS EXISTS]</div>
+                        <div class="box-content">
+                            <p class="mono-text">
+                                Solana has become ground zero for meme coin degen gambling. Pump.fun alone 
+                                launches 1000+ tokens daily. Most go to zero. Some 100x overnight.
+                            </p>
+                            <div class="stat-block compact">
+                                <div class="stat-row">
+                                    <span class="stat-label">Avg meme lifespan:</span>
+                                    <span class="stat-value">< 48 hours</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">% that get rugged:</span>
+                                    <span class="stat-value">~87%</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Avg loss per rug:</span>
+                                    <span class="stat-value">$2,400</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Total lost annually:</span>
+                                    <span class="stat-value">~$2.8B</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Insurance options:</span>
+                                    <span class="stat-value error">NONE</span>
+                                </div>
+                            </div>
+                            <p class="mono-text small">
+                                Traditional insurance won't touch crypto. Existing DeFi insurance only 
+                                covers smart contract exploits (not economic attacks). <strong>There's a 
+                                massive gap</strong> for high-risk token protection.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Column -->
+                <div class="hero-col hero-solution">
+                    <div class="hero-col-header">
+                        <span class="header-prompt">##</span>
+                        <h2 class="hero-col-title">THE SOLUTION</h2>
+                    </div>
+                    <div class="hero-box">
+                        <div class="box-header">[TOKEN SHIELD PROTOCOL]</div>
+                        <div class="box-content">
+                            <p class="mono-text">
+                                Automated, oracle-driven insurance for high-risk Solana tokens. 
+                                No trust, no manual claims, no waiting.
+                            </p>
+                            <div class="feature-list compact">
+                                <div class="feature-item">
+                                    <span class="feature-icon">[✓]</span>
+                                    <div class="feature-text">
+                                        <strong>Automated Detection</strong>
+                                        <br>Pyth oracles monitor price dumps, liquidity drains, dev wallet activity
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">[✓]</span>
+                                    <div class="feature-text">
+                                        <strong>Instant Payouts</strong>
+                                        <br>Smart contract sends SOL/USDC within minutes. No forms, no approval.
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">[✓]</span>
+                                    <div class="feature-text">
+                                        <strong>Flexible Coverage</strong>
+                                        <br>30-70% protection. Pay 2-7% premium. Keep all gains.
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">[✓]</span>
+                                    <div class="feature-text">
+                                        <strong>Sustainable Pool</strong>
+                                        <br>Yield-generating reserves. 150% over-collateralized.
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mono-text small">
+                                Smart contracts + Pyth oracles + shared pool = <strong>trustless protection</strong> for degen plays.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero CTAs -->
+            <div class="hero-ctas">
+                <button class="terminal-button primary" id="waitlistBtn">
+                    <span class="btn-prompt">$</span> join_waitlist --priority
+                </button>
+                <a href="docs.html" class="terminal-button secondary">
+                    <span class="btn-prompt">$</span> read_docs
+                </a>
+                <a href="#how" class="terminal-button tertiary">
+                    <span class="btn-prompt">$</span> see_how_it_works
+                </a>
+            </div>
+        </section>
+
+        <!-- What is Token Shield -->
+        <section class="hero-intro-section">
+            <div class="intro-block">
+                <div class="intro-content">
+                    <span class="intro-label">[WHAT IS TOKEN SHIELD?]</span>
+                    <p class="intro-text">
+                        On-chain insurance protocol for high-risk Solana tokens. Get paid automatically when 
+                        rugs happen. No KYC. No claims. No trust. Just smart contracts, oracles, and degens protecting degens.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-section" id="how">
+            <div class="section-header-term">
+                <span class="header-prompt">##</span>
+                <h2 class="section-title-term">HOW IT WORKS</h2>
+            </div>
+            <div class="content-box">
+                <div class="box-header">[STEP-BY-STEP PROCESS]</div>
+                <div class="box-content">
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-number">[01]</div>
+                            <div class="step-content">
+                                <div class="step-title">SUBMIT POSITION & SELECT TOKEN</div>
+                                <div class="step-desc">
+                                    Choose any eligible high-risk Solana token. No wallet connection required.
+                                    <br>• Enter wallet address + token contract address
+                                    <br>• Protocol verifies position on-chain via oracle
+                                    <br>• System checks eligibility and assigns risk score (1-10)
+                                </div>
+                                <div class="step-code">
+                                    <code>$ submit-position --wallet=7xK2...mPq9 --token=NEET</code>
+                                    <br><code class="output">✓ Position verified: 25,000 NEET | Risk Score: 8/10</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">[02]</div>
+                            <div class="step-content">
+                                <div class="step-title">CONFIGURE & RECEIVE POLICY ID</div>
+                                <div class="step-desc">
+                                    Specify coverage level (30/50/70%), duration (7-30d). VRF generates policy ID.
+                                    <br>Premium = PositionSize × Coverage × Duration × RiskScore × 2%
+                                    <br>Pay to deterministic address. Store policy ID + secret for claims.
+                                </div>
+                                <div class="step-code">
+                                    <code>$ create-policy --coverage=50% --days=14</code>
+                                    <br><code class="output">Policy ID: TS-8472-9F3A | Premium: 224 USDC</code>
+                                    <br><code class="output">✓ Policy token (TS-POLICY-8472) sent to wallet</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">[03]</div>
+                            <div class="step-content">
+                                <div class="step-title">ORACLE MONITORING (AUTOMATIC)</div>
+                                <div class="step-desc">
+                                    Pyth oracles + on-chain monitors run 24/7 checking for triggers:
+                                    <br>• Price dump >40% in 24h
+                                    <br>• Liquidity drain >50% in 24h
+                                    <br>• Dev wallet dump >10% supply
+                                </div>
+                                <div class="step-code">
+                                    <code>$ monitor-status --policy=8472</code>
+                                    <br><code class="output">[ACTIVE] Monitoring $NEET | No triggers | 12d remaining</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">[04]</div>
+                            <div class="step-content">
+                                <div class="step-title">AUTOMATIC PAYOUT (IF TRIGGERED)</div>
+                                <div class="step-desc">
+                                    When trigger confirmed, smart contract:
+                                    <br>1. Calculates actual loss from entry to trigger event
+                                    <br>2. Applies coverage percentage and deductibles
+                                    <br>3. Sends SOL/USDC directly to wallet (2-5 min)
+                                    <br>4. Burns policy token (TS-POLICY-8472)
+                                </div>
+                                <div class="step-code">
+                                    <code>$ payout-log --policy=TS-8472-9F3A</code>
+                                    <br><code class="output error">[TRIGGER] Price -73% detected @ 2026-02-24 23:47</code>
+                                    <br><code class="output success">✓ Payout: 3,650 USDC sent to 7xK2...mPq9</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Shield Section -->
+        <section class="team-shield-section">
+            <div class="section-header-term">
+                <span class="header-prompt">##</span>
+                <h2 class="section-title-term">TEAM SHIELD: PROJECT-SPONSORED COVERAGE</h2>
+            </div>
+            <div class="content-box">
+                <div class="box-header">[FOR TEAMS & PROJECTS]</div>
+                <div class="box-content">
+                    <p class="mono-text">
+                        Token Shield isn't just for individual degens. <strong>Projects can protect their holder base</strong> 
+                        with bulk coverage as a trust-building and community retention tool.
+                    </p>
+                    
+                    <div class="hero-split team-split" style="margin-top: 25px;">
+                        <div class="team-feature-box">
+                            <div class="box-header">[HOW IT WORKS]</div>
+                            <div class="box-content">
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <span class="check-icon">✓</span>
+                                        <div class="feature-text">
+                                            <strong>Post-Deployment Enrollment:</strong> Works with any existing SPL token, no contract modification needed
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="check-icon">✓</span>
+                                        <div class="feature-text">
+                                            <strong>Holder Cohort Selection:</strong> Cover top N wallets by holdings or specific address list
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="check-icon">✓</span>
+                                        <div class="feature-text">
+                                            <strong>Bulk Premium Discounts:</strong> 15-30% discount for volume coverage
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="check-icon">✓</span>
+                                        <div class="feature-text">
+                                            <strong>Auto-Payout Distribution:</strong> If triggers hit, all covered holders get paid automatically
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="team-feature-box">
+                            <div class="box-header">[BENEFITS]</div>
+                            <div class="box-content">
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <span class="check-icon">→</span>
+                                        <div class="feature-text">
+                                            <strong>Marketing Tool:</strong> \"We insure our holders\" = instant trust signal
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="check-icon">→</span>
+                                        <div class="feature-text">
+                                            <strong>Reduce Sell Pressure:</strong> Holders feel protected during volatility
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="check-icon">→</span>
+                                        <div class="feature-text">
+                                            <strong>Community Retention:</strong> Shows long-term commitment to holder base
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="check-icon">→</span>
+                                        <div class="feature-text">
+                                            <strong>Competitive Edge:</strong> Stand out in crowded meme token market
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-box" style="margin-top: 25px;">
+                        <div class="box-header">[EXAMPLE: $BONK COVERS TOP 50 HOLDERS]</div>
+                        <div class="box-content">
+                            <div class="step-code">
+                                <code>$ team-apply --token=BONK --cohort=top-50</code>
+                                <br><code class="output">Total Coverage Value: $2,500,000</code>
+                                <br><code class="output">Coverage Level: 50% | Duration: 30 days</code>
+                                <br><code class="output">Individual Premium (no discount): $150,000</code>
+                                <br><code class="output success">Bulk Premium (20% discount): $120,000</code>
+                                <br><code class="output">✓ Per holder cost: $2,400 each (paid by team)</code>
+                            </div>
+                            <p class="mono-text small" style="margin-top: 15px;">
+                                <strong>Result:</strong> All 50 holders automatically protected. If $BONK triggers payout event, 
+                                each holder receives coverage proportional to their losses. Team pays upfront, holders get 
+                                peace of mind.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; text-align: center;">
+                        <a href="mailto:teams@tokenshield.xyz" class="terminal-button-secondary">
+                            $ ./apply_team_coverage.sh
+                        </a>
+                        <p class="mono-text small" style="margin-top: 12px; color: var(--terminal-gray);">
+                            Team applications reviewed within 48 hours
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specs -->
+        <section class="specs-section" id="specs">
+            <div class="section-header-term">
+                <span class="header-prompt">##</span>
+                <h2 class="section-title-term">TECHNICAL SPECS</h2>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-box">
+                    <div class="spec-header">[ELIGIBILITY]</div>
+                    <div class="spec-content">
+                        <table class="spec-table">
+                            <tr>
+                                <td>Volatility:</td>
+                                <td>>50% (30d std dev)</td>
+                            </tr>
+                            <tr>
+                                <td>Liquidity:</td>
+                                <td><$2M TVL</td>
+                            </tr>
+                            <tr>
+                                <td>Age:</td>
+                                <td><90 days</td>
+                            </tr>
+                            <tr>
+                                <td>Chain:</td>
+                                <td>Solana SPL</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-header">[COVERAGE]</div>
+                    <div class="spec-content">
+                        <table class="spec-table">
+                            <tr>
+                                <td>Levels:</td>
+                                <td>30%, 50%, 70%</td>
+                            </tr>
+                            <tr>
+                                <td>Duration:</td>
+                                <td>7-30 days</td>
+                            </tr>
+                            <tr>
+                                <td>Deductible:</td>
+                                <td>10% minimum loss</td>
+                            </tr>
+                            <tr>
+                                <td>Max Position:</td>
+                                <td>$50k per policy</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-header">[TRIGGERS]</div>
+                    <div class="spec-content">
+                        <table class="spec-table">
+                            <tr>
+                                <td>Price Dump:</td>
+                                <td>>40% in 24h</td>
+                            </tr>
+                            <tr>
+                                <td>Liq Drain:</td>
+                                <td>>50% in 24h</td>
+                            </tr>
+                            <tr>
+                                <td>Dev Dump:</td>
+                                <td>>10% supply</td>
+                            </tr>
+                            <tr>
+                                <td>Conf Time:</td>
+                                <td>~2-5 minutes</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-header">[POOL]</div>
+                    <div class="spec-content">
+                        <table class="spec-table">
+                            <tr>
+                                <td>Target Ratio:</td>
+                                <td>150% collateral</td>
+                            </tr>
+                            <tr>
+                                <td>Yield Strategy:</td>
+                                <td>Marginfi + Stake</td>
+                            </tr>
+                            <tr>
+                                <td>Expected APY:</td>
+                                <td>5-8%</td>
+                            </tr>
+                            <tr>
+                                <td>Liquid Reserve:</td>
+                                <td>20% minimum</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap (Hidden for now) -->
+        <!-- 
+        <section class="roadmap-section">
+            <div class="section-header-term">
+                <span class="header-prompt">##</span>
+                <h2 class="section-title-term">ROADMAP</h2>
+            </div>
+            <div class="content-box">
+                <div class="box-header">[DEVELOPMENT TIMELINE]</div>
+                <div class="box-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">[Q2 2026]</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">FOUNDATION</div>
+                                <div class="timeline-tasks">
+                                    [ ] Smart contract development (Anchor)
+                                    <br>[ ] Oracle integration (Pyth)
+                                    <br>[ ] Frontend interface
+                                    <br>[ ] Premium pricing model
+                                    <br>[ ] Community formation
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">[Q3 2026]</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">TESTING & AUDITS</div>
+                                <div class="timeline-tasks">
+                                    [ ] Devnet deployment
+                                    <br>[ ] Public testnet + bug bounty
+                                    <br>[ ] Security audit #1 (OtterSec)
+                                    <br>[ ] Security audit #2 (Neodyme)
+                                    <br>[ ] Economic stress testing
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item current">
+                            <div class="timeline-date">[Q4 2026]</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">MAINNET LAUNCH</div>
+                                <div class="timeline-tasks">
+                                    [ ] Limited mainnet beta (capped)
+                                    <br>[ ] Public mainnet launch
+                                    <br>[ ] Governance token distribution
+                                    <br>[ ] DAO transition begins
+                                    <br>[ ] Marketing + partnerships
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">[2027+]</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">EXPANSION</div>
+                                <div class="timeline-tasks">
+                                    [ ] Multi-chain deployment
+                                    <br>[ ] Advanced coverage options
+                                    <br>[ ] Institutional products
+                                    <br>[ ] Full DAO control
+                                    <br>[ ] Self-sustaining ecosystem
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        -->
+
+        <!-- CTA -->
+        <section class="cta-section" id="contact">
+            <div class="content-box cta-box">
+                <div class="box-header">[JOIN THE MOVEMENT]</div>
+                <div class="box-content">
+                    <p class="mono-text" style="margin-bottom: 20px;">
+                        Token Shield is currently in development. Join the waitlist for early access 
+                        to testnet and mainnet beta. First 1000 users get retroactive $SHIELD airdrop.
+                    </p>
+                    <form class="terminal-form">
+                        <div class="form-group">
+                            <label class="form-label">$ enter_email --address=</label>
+                            <input type="email" class="terminal-input" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">$ enter_twitter --handle=</label>
+                            <input type="text" class="terminal-input" placeholder="@yourhandle (optional)">
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="risk-accept" required>
+                            <label for="risk-accept">[ ] I understand this is experimental DeFi and accept the risks</label>
+                        </div>
+                        <button type="submit" class="terminal-button">
+                            $ ./submit_waitlist.sh
+                        </button>
+                    </form>
+                    <div class="links-section">
+                        <div class="links-header">[RESOURCES]</div>
+                        <div class="link-list">
+                            <a href="docs.html" class="terminal-link">→ Full Documentation</a>
+                            <a href="#" class="terminal-link">→ GitHub (Coming Soon)</a>
+                            <a href="#" class="terminal-link">→ Discord (Coming Soon)</a>
+                            <a href="#" class="terminal-link">→ Twitter (Coming Soon)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="terminal-footer">
+            <div class="footer-content">
+                <div class="footer-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+                <img src="logo.png" alt="Token Shield" class="logo-img-footer">
+                <div class="footer-info">
+                    <div class="footer-col">
+                        <div class="footer-title">TOKEN SHIELD</div>
+                        <div class="footer-text">DeFi Insurance for Solana Degens</div>
+                        <div class="footer-text">Community-driven experiment | Not financial advice</div>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-title">[STATUS]</div>
+                        <div class="footer-text">Phase: Conceptual Development</div>
+                        <div class="footer-text">Expected Launch: Q4 2026</div>
+                        <div class="footer-text">Last Updated: 2026-02-25</div>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-title">[LEGAL]</div>
+                        <div class="footer-text">No guarantees. DYOR.</div>
+                        <div class="footer-text">High experimental risk.</div>
+                        <div class="footer-text">See docs for full disclaimers.</div>
+                    </div>
+                </div>
+                <div class="footer-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+                <div class="footer-bottom">
+                    <span class="prompt">root@solana:~/token-shield$</span> © 2026 Token Shield | Built for degens, by degens <span class="cursor">_</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Waitlist Modal -->
+    <div class="modal" id="waitlistModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-window">
+            <div class="window-header">
+                <span class="window-title">$ ./join_waitlist.sh --interactive</span>
+                <span class="window-close" id="closeModal">[x]</span>
+            </div>
+            <div class="window-content">
+                <pre class="terminal-output">
+<span class="output-header">╔═══════════════════════════════════════════════════════════════════════════╗</span>
+<span class="output-header">║                        TOKEN SHIELD WAITLIST                              ║</span>
+<span class="output-header">╚═══════════════════════════════════════════════════════════════════════════╝</span>
+
+<span class="output-line">Join 10,000+ degens protecting their bags. Get:</span>
+<span class="output-line"></span>
+<span class="output-line">  • <span class="success">Early access to testnet & mainnet beta</span></span>
+<span class="output-line">  • <span class="success">Exclusive $SHIELD token airdrop (first 1000 users)</span></span>
+<span class="output-line">  • <span class="success">Priority coverage allocation at launch</span></span>
+<span class="output-line">  • <span class="info">Updates on protocol development</span></span>
+<span class="output-line"></span>
+<span class="output-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+                </pre>
+                
+                <form class="modal-form" id="modalForm">
+                    <div class="form-group">
+                        <label class="form-label">$ enter_email --address=</label>
+                        <input type="email" class="terminal-input" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">$ enter_twitter --handle=</label>
+                        <input type="text" class="terminal-input" name="twitter" placeholder="@yourhandle (optional)">
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="modal-risk-accept" name="acceptRisk" required>
+                        <label for="modal-risk-accept">[ ] I understand this is experimental DeFi and accept all risks</label>
+                    </div>
+                    <button type="submit" class="terminal-button modal-submit">
+                        <span class="btn-prompt">$</span> submit --confirm
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
