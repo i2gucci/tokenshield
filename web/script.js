@@ -106,11 +106,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Console easter egg for degens
-    console.log('%c🛡️ Token Shield', 'color: #00ff00; font-size: 24px; font-weight: bold;');
-    console.log('%cGM degen! Thanks for checking out the code.', 'color: #00ff00; font-size: 14px;');
+    // Console ASCII logo for degens
+    console.log('%c _____ _____ _   _ _____ _   _    _____ _   _ _____ _____ _     ____  ', 'color: #00ff00; font-family: monospace;');
+    console.log('%c|_   _|     | | / | ___| \\ | |  /  ___| | | |_   _| ___| |   |  _ \\ ', 'color: #00ff00; font-family: monospace;');
+    console.log('%c  | | | | | |   | | |__ |  \\| |  \\___  | |_| | | | | |__ | |   | | | |', 'color: #00ff00; font-family: monospace;');
+    console.log('%c  | | | | | | . ` |  __||     |   ___)  |  _  | | | |  __|| |   | | | |', 'color: #00ff00; font-family: monospace;');
+    console.log('%c  | | | |_| | |\\  | |___| |\\  |  /____  | | | |_| |_| |___| |___| |_| |', 'color: #00ff00; font-family: monospace;');
+    console.log('%c  |_| \\_____/_| \\_\\_____|_| \\_|  \\_____\\_| |_|\\___/\\_____|_____|_____/', 'color: #00ff00; font-family: monospace;');
+    console.log('%c\nGM degen! Thanks for checking out the code.', 'color: #00ff00; font-size: 14px;');
     console.log('%cWant to contribute? We are looking for smart contract devs, frontend wizards, and quantitative minds.', 'color: #808080; font-size: 12px;');
-    console.log('%cJoin our Discord (coming soon) or hit us on Twitter!', 'color: #808080; font-size: 12px;');
 });
 
 // Documentation page sidebar navigation
