@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Shield - App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="terminal-mode">
+    <!-- Logo Header -->
+    <header class="ascii-header">
+        <img src="logo.png" alt="Token Shield" class="logo-img">
+        <div class="tagline">[ DEFI INSURANCE FOR SOLANA DEGENS ]</div>
+        
+        <!-- Terminal Navigation -->
+        <nav class="terminal-nav">
+            <div class="nav-links-terminal">
+                <a href="index.html" class="nav-link-cmd">/home</a>
+                <a href="docs.html" class="nav-link-cmd">/docs</a>
+                <a href="app.html" class="nav-link-cmd active">/app</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main App Content -->
+    <main class="terminal-content app-content">
+        
+        <!-- App Tabs -->
+        <div class="app-tabs">
+            <button class="app-tab active" data-tab="create">
+                <span class="tab-prompt">$</span> create_policy
+            </button>
+            <button class="app-tab" data-tab="lookup">
+                <span class="tab-prompt">$</span> lookup_policy
+            </button>
+            <button class="app-tab" data-tab="pool">
+                <span class="tab-prompt">$</span> pool_stats
+            </button>
+        </div>
+
+        <!-- Create Policy Tab -->
+        <section id="tab-create" class="app-tab-content active">
+            <div class="content-box">
+                <div class="box-header">[CREATE COVERAGE POLICY - VRF ANONYMOUS]</div>
+                <div class="box-content">
+                    
+                    <!-- Wallet Address Input -->
+                    <div class="app-form-group">
+                        <label class="form-label">$ set_covered_wallet --address=</label>
+                        <input 
+                            type="text" 
+                            id="walletAddress" 
+                            class="terminal-input" 
+                            placeholder="Your Solana wallet address (e.g., 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU)"
+                        >
+                        <div class="form-hint">
+                            Enter the wallet address you want to protect (no connection required)
+                        </div>
+                    </div>
+
+                    <!-- Token Selection -->
+                    <div class="app-form-group">
+                        <label class="form-label">$ select_token --mint=</label>
+                        <input 
+                            type="text" 
+                            id="tokenMint" 
+                            class="terminal-input" 
+                            placeholder="Token mint address (e.g., EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v)"
+                        >
+                        <div class="form-hint">
+                            Enter the Solana token mint address you want to insure
+                        </div>
+                    </div>
+
+                    <!-- Token Info Display -->
+                    <div id="tokenInfo" class="token-info-panel" style="display: none;">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Token:</span>
+                                <span class="info-value" id="tokenName">--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Current Price:</span>
+                                <span class="info-value" id="tokenPrice">$--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">24h Change:</span>
+                                <span class="info-value" id="token24h">--%</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Liquidity:</span>
+                                <span class="info-value" id="tokenLiquidity">$--</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Risk Score:</span>
+                                <span class="info-value" id="tokenRisk">--/10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position Size -->
+                    <div class="app-form-group">
+                        <label class="form-label">$ set_position --tokens=</label>
+                        <input 
+                            type="number" 
+                            id="positionSize" 
+                            class="terminal-input" 
+                            placeholder="0"
+                            step="0.000001"
+                        >
+                        <div class="form-hint">
+                            Number of tokens you want to insure (max $50k USD value)
+                        </div>
+                        <div class="position-value">
+                            Position Value: <span id="positionUSD">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Coverage Level -->
+                    <div class="app-form-group">
+                        <label class="form-label">$ select_coverage --level=</label>
+                        <div class="coverage-options">
+                            <label class="coverage-option">
+                                <input type="radio" name="coverage" value="3000" id="coverage30">
+                                <span class="coverage-label">
+                                    <span class="coverage-percent">30%</span>
+                                    <span class="coverage-desc">Basic Protection</span>
+                                </span>
+                            </label>
+                            <label class="coverage-option">
+                                <input type="radio" name="coverage" value="5000" id="coverage50" checked>
+                                <span class="coverage-label">
+                                    <span class="coverage-percent">50%</span>
+                                    <span class="coverage-desc">Standard Coverage</span>
+                                </span>
+                            </label>
+                            <label class="coverage-option">
+                                <input type="radio" name="coverage" value="7000" id="coverage70">
+                                <span class="coverage-label">
+                                    <span class="coverage-percent">70%</span>
+                                    <span class="coverage-desc">Maximum Protection</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-hint">
+                            Percentage of losses covered if trigger conditions are met
+                        </div>
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="app-form-group">
+                        <label class="form-label">$ set_duration --days=</label>
+                        <input 
+                            type="range" 
+                            id="duration" 
+                            class="terminal-slider" 
+                            min="7" 
+                            max="30" 
+                            value="14"
+                        >
+                        <div class="slider-value">
+                            <span id="durationValue">14</span> days
+                        </div>
+                        <div class="form-hint">
+                            Coverage period: 7-30 days
+                        </div>
+                    </div>
+
+                    <!-- Premium Calculation -->
+                    <div class="premium-panel">
+                        <div class="premium-header">[PREMIUM CALCULATION]</div>
+                        <div class="premium-breakdown">
+                            <div class="premium-row">
+                                <span>Base Premium:</span>
+                                <span id="basePremium">--</span>
+                            </div>
+                            <div class="premium-row">
+                                <span>Risk Multiplier:</span>
+                                <span id="riskMultiplier">--x</span>
+                            </div>
+                            <div class="premium-row">
+                                <span>Duration Factor:</span>
+                                <span id="durationFactor">--x</span>
+                            </div>
+                            <div class="premium-row total">
+                                <span>Total Premium:</span>
+                                <span id="totalPremium">-- USDC</span>
+                            </div>
+                            <div class="premium-row">
+                                <span>Max Payout:</span>
+                                <span id="maxPayout">-- USDC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create Button -->
+                    <button id="createPolicy" class="terminal-button large" disabled>
+                        $ ./create_policy_vrf.sh
+                    </button>
+
+                    <div class="form-hint" style="margin-top: 20px;">
+                        <strong>How VRF Enrollment Works:</strong>
+                        <br>• No wallet connection required
+                        <br>• Policy ID generated via Chainlink VRF (verifiable randomness)
+                        <br>• You receive a unique policy ID + secret for claims
+                        <br>• SPL policy token minted to your specified address
+                        <br><br>
+                        <strong>Trigger Conditions:</strong>
+                        <br>• Price dump: >40% drop from entry price
+                        <br>• Liquidity drain: >50% liquidity loss in 24h
+                        <br>• Dev wallet dump: >10% supply sold by major holder
+                    </div>
+
+                    <!-- Policy Created Success Modal (hidden by default) -->
+                    <div id="policyCreatedModal" class="policy-modal" style="display: none;">
+                        <div class="modal-content-policy">
+                            <div class="box-header">[POLICY CREATED SUCCESSFULLY]</div>
+                            <div class="policy-details-success">
+                                <div class="success-message">
+                                    ✓ Your coverage policy has been created!
+                                </div>
+                                
+                                <div class="policy-credentials">
+                                    <div class="credential-item">
+                                        <label>Policy ID:</label>
+                                        <div class="credential-value" id="generatedPolicyId">--</div>
+                                    </div>
+                                    <div class="credential-item">
+                                        <label>Policy Secret:</label>
+                                        <div class="credential-value" id="generatedSecret">--</div>
+                                    </div>
+                                </div>
+
+                                <div class="warning-box">
+                                    ⚠️ CRITICAL: Save these credentials securely!
+                                    <br>• Without them, you cannot claim payouts
+                                    <br>• They cannot be recovered if lost
+                                    <br>• Store in multiple safe locations
+                                </div>
+
+                                <div class="backup-actions">
+                                    <button id="downloadBackup" class="terminal-button">
+                                        $ download_backup.json
+                                    </button>
+                                    <button id="printBackup" class="terminal-button">
+                                        $ print_backup
+                                    </button>
+                                    <button id="copyCredentials" class="terminal-button">
+                                        $ copy_to_clipboard
+                                    </button>
+                                </div>
+
+                                <div class="form-checkbox" style="margin-top: 20px;">
+                                    <input type="checkbox" id="backupConfirm" required>
+                                    <label for="backupConfirm">[ ] I have securely backed up my policy credentials</label>
+                                </div>
+
+                                <button id="closeSuccessModal" class="terminal-button large" disabled>
+                                    $ continue
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Lookup Policy Tab -->
+        <section id="tab-lookup" class="app-tab-content">
+            <div class="content-box">
+                <div class="box-header">[LOOKUP YOUR POLICY]</div>
+                <div class="box-content">
+                    
+                    <!-- Policy Lookup Form -->
+                    <div class="lookup-form">
+                        <div class="app-form-group">
+                            <label class="form-label">$ enter_policy_id --id=</label>
+                            <input 
+                                type="text" 
+                                id="lookupPolicyId" 
+                                class="terminal-input" 
+                                placeholder="Your policy ID (64-character hex string)"
+                            >
+                        </div>
+
+                        <div class="app-form-group">
+                            <label class="form-label">$ enter_secret --secret=</label>
+                            <input 
+                                type="password" 
+                                id="lookupSecret" 
+                                class="terminal-input" 
+                                placeholder="Your policy secret"
+                            >
+                        </div>
+
+                        <button id="lookupPolicy" class="terminal-button large">
+                            $ ./lookup_policy.sh
+                        </button>
+                    </div>
+
+                    <!-- Policy Display Container -->
+                    <div id="policiesContainer" style="margin-top: 30px;">
+                        <!-- Policy will be displayed here after lookup -->
+                        <div class="empty-state">
+                            <p class="mono-text">
+                                Enter your policy ID and secret to view policy details.
+                                <br><br>
+                                $ no wallet connection required
+                                <br>$ your credentials = proof of ownership
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Policy Card Template (hidden, cloned via JS) -->
+                    <template id="policyCardTemplate">
+                        <div class="policy-card">
+                            <div class="policy-header">
+                                <div class="policy-id">Policy #<span class="policy-id-value"></span></div>
+                                <div class="policy-status">
+                                    <span class="status-badge"></span>
+                                </div>
+                            </div>
+                            <div class="policy-details">
+                                <div class="policy-row">
+                                    <span class="policy-label">Token:</span>
+                                    <span class="policy-value token-name"></span>
+                                </div>
+                                <div class="policy-row">
+                                    <span class="policy-label">Position Size:</span>
+                                    <span class="policy-value position-size"></span>
+                                </div>
+                                <div class="policy-row">
+                                    <span class="policy-label">Coverage:</span>
+                                    <span class="policy-value coverage-level"></span>
+                                </div>
+                                <div class="policy-row">
+                                    <span class="policy-label">Entry Price:</span>
+                                    <span class="policy-value entry-price"></span>
+                                </div>
+                                <div class="policy-row">
+                                    <span class="policy-label">Current Price:</span>
+                                    <span class="policy-value current-price"></span>
+                                </div>
+                                <div class="policy-row">
+                                    <span class="policy-label">Max Payout:</span>
+                                    <span class="policy-value max-payout"></span>
+                                </div>
+                                <div class="policy-row">
+                                    <span class="policy-label">Expires:</span>
+                                    <span class="policy-value expiry"></span>
+                                </div>
+                            </div>
+                            <div class="policy-actions">
+                                <button class="terminal-button small check-trigger">
+                                    $ check_trigger
+                                </button>
+                                <button class="terminal-button small view-details">
+                                    $ view_details
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Pool Stats Tab -->
+        <section id="tab-pool" class="app-tab-content">
+            <div class="content-box">
+                <div class="box-header">[PROTOCOL STATISTICS]</div>
+                <div class="box-content">
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Value Locked</div>
+                            <div class="stat-value" id="poolTVL">$--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Active Policies</div>
+                            <div class="stat-value" id="activePolicies">--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Coverage</div>
+                            <div class="stat-value" id="totalCoverage">$--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Premiums</div>
+                            <div class="stat-value" id="totalPremiums">$--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Payouts</div>
+                            <div class="stat-value" id="totalPayouts">$--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Collateral Ratio</div>
+                            <div class="stat-value" id="collateralRatio">--%</div>
+                        </div>
+                    </div>
+
+                    <div class="pool-chart-container" style="margin-top: 40px;">
+                        <div class="chart-header">[POOL RESERVES CHART]</div>
+                        <div class="chart-placeholder">
+                            <p class="mono-text">Chart visualization coming soon...</p>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity" style="margin-top: 40px;">
+                        <div class="activity-header">[RECENT ACTIVITY]</div>
+                        <div id="activityFeed" class="activity-feed">
+                            <div class="activity-item">
+                                <span class="activity-time">[2026-02-26 14:23:01]</span>
+                                <span class="activity-text">Policy created: 0x7a3f... | 10,000 $TOKEN | 50% coverage</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-time">[2026-02-26 14:15:42]</span>
+                                <span class="activity-text">Trigger activated: Policy 0x4b2c... | Price dump detected</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-time">[2026-02-26 13:58:17]</span>
+                                <span class="activity-text">Payout executed: 2,500 USDC → 0x9e1d...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="terminal-footer">
+        <div class="footer-content">
+            <div class="footer-text">
+                $ cat /etc/token-shield/disclaimer.txt
+                <br>
+                <span class="warning-text">
+                    ⚠ EXPERIMENTAL PROTOCOL | HIGH RISK | USE AT YOUR OWN RISK
+                </span>
+            </div>
+            <div class="footer-links">
+                <a href="docs.html" class="terminal-link">Documentation</a>
+                <a href="#" class="terminal-link">GitHub</a>
+                <a href="#" class="terminal-link">Discord</a>
+                <a href="#" class="terminal-link">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
