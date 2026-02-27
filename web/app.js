@@ -468,7 +468,7 @@ function displayPolicy(policy) {
 
 function updatePremiumCalculation() {
     const tokenCount = parseFloat(document.getElementById('positionSize').value) || 0;
-    const coverageLevel = parseInt(document.querySelector('input[name="coverage"]:checked').value) || 50;
+    const coverageLevelBps = parseInt(document.querySelector('input[name="coverage"]:checked').value) || 5000; // Basis points
     const duration = parseInt(document.getElementById('duration').value) || 14;
 
     // Get token price from live data
@@ -495,8 +495,9 @@ function updatePremiumCalculation() {
     
     // Smart contract formula: Premium = PositionValue × CoverageLevel × (Duration/30) × RiskScore × BaseRate(2%)
     const BASE_RATE = 0.02; // 2% (200 basis points)
+    const BPS_DENOMINATOR = 10000; // Basis points denominator
     
-    const coverageFactor = coverageLevel / 100;
+    const coverageFactor = coverageLevelBps / BPS_DENOMINATOR; // Convert basis points to decimal (5000 → 0.50)
     const durationFactor = duration / 30; // Normalize to 30 days (not 12)
     const basePremium = positionValueUSD * BASE_RATE;
     
