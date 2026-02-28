@@ -421,26 +421,116 @@ Payout: $0 ❌ (under minimum threshold)</code></pre>
                 <li><strong>Over-Collateralization:</strong> Target ratio of 150% (pool value / active coverage value)</li>
             </ul>
 
-            <h3>Yield Strategies</h3>
-            <p>The pool generates returns through conservative DeFi strategies:</p>
-
-            <h4>Primary Strategies (Launch Phase)</h4>
-            <ol>
-                <li><strong>Marginfi Lending:</strong> Deposit USDC/SOL in Marginfi lending markets (conservative ~5-8% APY)</li>
-                <li><strong>Solana Staking:</strong> Native SOL staking via validators (predictable ~7% APY)</li>
-                <li><strong>Stable LP Positions:</strong> USDC-USDT or similar stable pairs on Raydium (low IL risk)</li>
-            </ol>
-
-            <h4>Secondary Strategies (Future)</h4>
-            <ul>
-                <li>Delta-neutral perpetual funding rate farming</li>
-                <li>Automated market-making on select low-volatility pairs</li>
-                <li>Cross-protocol yield optimization via aggregators</li>
-            </ul>
+            <h3>Yield Revenue Model</h3>
+            <p>A critical component of protocol sustainability: <strong>insurance premiums sit idle between collection and potential claims</strong>. By deploying 60-80% of pool reserves into ultra-low-risk yield strategies, we generate <strong>35-50% additional revenue</strong> on top of premium income, significantly improving long-term viability.</p>
 
             <div class="callout">
-                <p><strong>Risk Management:</strong> All yield strategies are DAO-approved and limited to audited, battle-tested protocols. Maximum 40% of pool can be in any single strategy to prevent concentration risk.</p>
+                <p><strong>Revenue Impact:</strong> At $500k pool TVL, yield strategies generate $26k/year in additional revenue (52% boost). At $2M TVL: $126k/year in yield revenue. This compounds reserve growth and reduces dependency on premium volume during high-claim periods.</p>
             </div>
+
+            <h3>Three-Phase Deployment Strategy</h3>
+
+            <h4>Phase 1: Launch (Pool $50-200k TVL)</h4>
+            <p><strong>Conservative approach:</strong> 60% deployed to yield, 40% kept liquid for instant payouts.</p>
+            <ul>
+                <li><strong>Marinade Finance (mSOL):</strong> 30% allocation, 7.2% APY - Liquid staking with $2.8B TVL, 9+ audits, instant liquidity on DEXs</li>
+                <li><strong>Jito Staking (JitoSOL):</strong> 15% allocation, 8.1% APY - MEV-boosted staking, $1.9B TVL, proven track record</li>
+                <li><strong>Marginfi USDC Lending:</strong> 15% allocation, 5.8% APY - Over-collateralized lending, $420M TVL, audited by OtterSec + Sec3</li>
+                <li><strong>Blended APY:</strong> 4.25% on entire pool, 7.1% on deployed capital</li>
+            </ul>
+
+            <h4>Phase 2: Growth (Pool $200k-$1M TVL)</h4>
+            <p><strong>Balanced approach:</strong> 70% deployed, 30% liquid as pool matures and claim patterns become predictable.</p>
+            <ul>
+                <li><strong>Diversification expansion:</strong> Add Sanctum LST (10%, 7.5% APY), Solend USDC (5%, 5.2% APY)</li>
+                <li><strong>Pilot Tier 2 strategies:</strong> Kamino Finance USDC-USDT vaults (5%, 12.3% APY) - Low impermanent loss stable pair</li>
+                <li><strong>Blended APY:</strong> 5.2% on entire pool, 7.4% on deployed capital</li>
+            </ul>
+
+            <h4>Phase 3: Mature (Pool $1M+ TVL)</h4>
+            <p><strong>Aggressive optimization:</strong> 80% deployed, 20% liquid reserves (ample for instant payouts at scale).</p>
+            <ul>
+                <li><strong>Full diversification:</strong> 7 uncorrelated strategies across liquid staking, lending, and stable yield farming</li>
+                <li><strong>Enhanced yield:</strong> Add Drift Protocol USDC Earn (5%, 10.1% APY), increase Kamino allocation to 10%</li>
+                <li><strong>Blended APY:</strong> 6.3% on entire pool, 7.9% on deployed capital</li>
+                <li><strong>Annual yield at $2M TVL:</strong> $126k additional protocol revenue</li>
+            </ul>
+
+            <h3>Risk Management Framework</h3>
+            <div class="callout warning">
+                <p><strong>Allocation Hard Limits (DAO-Enforced):</strong></p>
+                <ul>
+                    <li>Maximum 25% per protocol (30% for Marinade given 3+ year track record)</li>
+                    <li>Liquid reserves minimum: 20% at all times (never deploy everything)</li>
+                    <li>Emergency threshold: Auto-withdraw from yield if liquid reserves drop below 15%</li>
+                    <li>Only protocols with: >$100M TVL, 12+ months live, 2+ security audits, no critical exploits</li>
+                </ul>
+            </div>
+
+            <h4>Protocol Selection Criteria (All Must Pass)</h4>
+            <ol>
+                <li><strong>Track Record:</strong> Live >12 months OR established team with prior successful protocol</li>
+                <li><strong>Security:</strong> 2+ independent audits from reputable firms (OtterSec, Sec3, Halborn, etc.)</li>
+                <li><strong>Liquidity:</strong> TVL >$100M, liquid redemption within 24 hours (no long lockups)</li>
+                <li><strong>Solvency:</strong> Over-collateralized if lending protocol (not fractional reserves)</li>
+                <li><strong>Resilience:</strong> No critical exploits or governance attacks in last 12 months</li>
+            </ol>
+
+            <h4>Rebalancing & Monitoring</h4>
+            <ul>
+                <li><strong>Daily:</strong> Check APY rates, protocol TVL changes, verify liquid reserves >20%</li>
+                <li><strong>Weekly:</strong> Review claim rate vs projections, scan for new opportunities</li>
+                <li><strong>Monthly:</strong> Full portfolio rebalance, DAO votes on strategy changes, publish transparency report</li>
+                <li><strong>Emergency:</strong> Auto-liquidate from lowest-yield strategy if reserves drop below 15%, halt all rebalancing during Solana network issues</li>
+            </ul>
+
+            <h3>Expected Revenue Impact</h3>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                <thead>
+                    <tr style="background: #0a0a0a; border: 1px solid #00ff00;">
+                        <th style="padding: 10px; border: 1px solid #00ff00; text-align: left;">Pool Size</th>
+                        <th style="padding: 10px; border: 1px solid #00ff00; text-align: left;">Phase</th>
+                        <th style="padding: 10px; border: 1px solid #00ff00; text-align: left;">Deployed %</th>
+                        <th style="padding: 10px; border: 1px solid #00ff00; text-align: left;">Annual Yield</th>
+                        <th style="padding: 10px; border: 1px solid #00ff00; text-align: left;">Revenue Boost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border: 1px solid #00ff00;">
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$100k</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">Phase 1</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">60%</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$4,245</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">4.2% of pool value</td>
+                    </tr>
+                    <tr style="border: 1px solid #00ff00; background: rgba(0, 255, 0, 0.05);">
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$500k</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">Phase 2</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">70%</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$26,100</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">5.2% of pool value</td>
+                    </tr>
+                    <tr style="border: 1px solid #00ff00;">
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$2M</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">Phase 3</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">80%</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$126,000</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">6.3% of pool value</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout">
+                <p><strong>Sustainability Impact:</strong> Yield revenue reduces protocol dependency on constant premium growth. During months with high claim rates, yield earnings help maintain pool solvency without emergency premium hikes. This is how major DeFi insurance protocols (Nexus Mutual, Unslashed) achieve long-term viability.</p>
+            </div>
+
+            <h3>Transparency & Governance</h3>
+            <ul>
+                <li><strong>Public Dashboard:</strong> Real-time Dune Analytics dashboard showing deployed amounts per strategy, historical APY, liquid reserves percentage</li>
+                <li><strong>DAO Control:</strong> Any new protocol addition requires 7-day governance vote with 60% approval threshold</li>
+                <li><strong>Open-Source Keeper:</strong> Automated rebalancing bot with transparent operations (funded by protocol for gas)</li>
+                <li><strong>Monthly Reports:</strong> Published blog posts explaining strategy performance, rebalance decisions, risk assessments</li>
+            </ul>
 
             <h3>Solvency Monitoring</h3>
             <p>The protocol continuously monitors:</p>
