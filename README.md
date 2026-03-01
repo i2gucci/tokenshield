@@ -15,6 +15,18 @@ Token Shield provides automated, oracle-verified coverage for meme coins, Pump.f
 3. **Trigger Events** - Smart contracts detect qualifying dump/rug events automatically
 4. **Execute Payouts** - Coverage is paid directly from the pool to affected policyholders
 
+## Recent Updates (Feb 28, 2026)
+
+### Token Eligibility Requirements
+- **Minimum Token Age:** 7 days from launch (teams can apply pre-launch via Team Shield)
+- **Minimum Market Cap:** $500k USD (adjustable based on SOL price)
+- **Full criteria:** See [eligibility-requirements.md](.internal-docs/eligibility-requirements.md)
+
+### Custom Coverage Levels
+- Users can now select **any percentage between 30-70%** (not just preset 30%, 50%, 70%)
+- Example: Choose 35%, 47%, 63%, or any custom level
+- More flexibility in risk/reward balance
+
 ## Learn More
 
 - **Website:** [tokenshield.fun](https://tokenshield.fun)

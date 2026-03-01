@@ -84,9 +84,25 @@ function initializeCreatePolicyForm() {
     // Coverage level updates
     coverageInputs.forEach(input => {
         input.addEventListener('change', () => {
+            // Handle custom coverage input visibility
+            const customInput = document.getElementById('customCoverageInput');
+            if (input.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.focus();
+            } else {
+                customInput.style.display = 'none';
+            }
             updatePremiumCalculation();
         });
     });
+
+    // Custom coverage input handler
+    const customCoverageInput = document.getElementById('customCoverageInput');
+    if (customCoverageInput) {
+        customCoverageInput.addEventListener('input', () => {
+            updatePremiumCalculation();
+        });
+    }
 
     // Duration slider
     durationSlider.addEventListener('input', (e) => {
@@ -277,7 +293,26 @@ async function createPolicy() {
         const walletAddress = document.getElementById('walletAddress').value;
         const tokenMint = document.getElementById('tokenMint').value;
         const tokenCount = parseFloat(document.getElementById('positionSize').value);
-        const coverageLevel = parseInt(document.querySelector('input[name="coverage"]:checked').value);
+        // Get coverage level - handle custom input
+        const selectedCoverage = document.querySelector('input[name="coverage"]:checked');
+        let coverageLevel;
+        
+        if (selectedCoverage && selectedCoverage.value === 'custom') {
+            const customPercentage = parseFloat(document.getElementById('customCoverageInput').value);
+            if (customPercentage && customPercentage >= 30 && customPercentage <= 70) {
+                coverageLevel = Math.round(customPercentage * 100); // Convert percentage to basis points
+            } else {
+                alert('Please enter a custom coverage percentage between 30% and 70%');
+                return;
+            }
+        } else {
+            coverageLevel = parseInt(selectedCoverage?.value);
+        }
+        
+        if (!coverageLevel || coverageLevel < 3000 || coverageLevel > 7000) {
+            alert('Invalid coverage level. Please select a coverage percentage between 30% and 70%.');
+            return;
+        }
         const duration = parseInt(document.getElementById('duration').value);
         
         // Get token info for USD calculation
@@ -468,7 +503,22 @@ function displayPolicy(policy) {
 
 function updatePremiumCalculation() {
     const tokenCount = parseFloat(document.getElementById('positionSize').value) || 0;
-    const coverageLevelBps = parseInt(document.querySelector('input[name="coverage"]:checked').value) || 5000; // Basis points
+    
+    // Get coverage level - handle custom input
+    const selectedCoverage = document.querySelector('input[name="coverage"]:checked');
+    let coverageLevelBps;
+    
+    if (selectedCoverage && selectedCoverage.value === 'custom') {
+        const customPercentage = parseFloat(document.getElementById('customCoverageInput').value);
+        if (customPercentage && customPercentage >= 30 && customPercentage <= 70) {
+            coverageLevelBps = Math.round(customPercentage * 100); // Convert percentage to basis points
+        } else {
+            coverageLevelBps = 5000; // Default to 50% if invalid
+        }
+    } else {
+        coverageLevelBps = parseInt(selectedCoverage?.value) || 5000; // Basis points
+    }
+    
     const duration = parseInt(document.getElementById('duration').value) || 14;
 
     // Get token price from live data

@@ -173,6 +173,12 @@
             <p>A token must meet <strong>all</strong> of the following criteria to be eligible: <a href="https://github.com/i2gucci/tokenshield/issues/new?template=feedback.md" target="_blank" class="feedback-link">[feedback on criteria]</a></p>
 
             <ol>
+                <li><strong>Minimum Token Age:</strong> At least 7 days old from initial mint/launch (for regular users)
+                    <ul>
+                        <li><em>Exception:</em> Teams can apply for Team Shield coverage even before token launch (pre-approval process)</li>
+                    </ul>
+                </li>
+                <li><strong>Minimum Market Cap:</strong> $500k USD minimum (subject to adjustment based on SOL price)</li>
                 <li><strong>Volatility Threshold:</strong> 30-day standard deviation of returns >50% (measured via Pyth price oracles)</li>
                 <li><strong>Liquidity Cap:</strong> Total liquidity (across all DEXs) <$2M USD</li>
                 <li><strong>Launch Recency:</strong> Token age <90 days from initial mint/launch</li>
@@ -425,7 +431,7 @@ Payout: $0 ❌ (under minimum threshold)</code></pre>
             <p>A critical component of protocol sustainability: <strong>insurance premiums sit idle between collection and potential claims</strong>. By deploying 60-80% of pool reserves into ultra-low-risk yield strategies, we generate <strong>35-50% additional revenue</strong> on top of premium income, significantly improving long-term viability.</p>
 
             <div class="callout">
-                <p><strong>Revenue Impact:</strong> At $500k pool TVL, yield strategies generate $26k/year in additional revenue (52% boost). At $2M TVL: $126k/year in yield revenue. This compounds reserve growth and reduces dependency on premium volume during high-claim periods.</p>
+                <p><strong>Revenue Impact:</strong> At $500k pool TVL, yield strategies generate $22.8k/year in additional revenue (46% boost). At $2M TVL: $111.6k/year in yield revenue. This compounds reserve growth and reduces dependency on premium volume during high-claim periods. <em>(Rates as of Feb 28, 2026)</em></p>
             </div>
 
             <h3>Three-Phase Deployment Strategy</h3>
@@ -433,27 +439,27 @@ Payout: $0 ❌ (under minimum threshold)</code></pre>
             <h4>Phase 1: Launch (Pool $50-200k TVL)</h4>
             <p><strong>Conservative approach:</strong> 60% deployed to yield, 40% kept liquid for instant payouts.</p>
             <ul>
-                <li><strong>Marinade Finance (mSOL):</strong> 30% allocation, 7.2% APY - Liquid staking with $2.8B TVL, 9+ audits, instant liquidity on DEXs</li>
-                <li><strong>Jito Staking (JitoSOL):</strong> 15% allocation, 8.1% APY - MEV-boosted staking, $1.9B TVL, proven track record</li>
-                <li><strong>Marginfi USDC Lending:</strong> 15% allocation, 5.8% APY - Over-collateralized lending, $420M TVL, audited by OtterSec + Sec3</li>
-                <li><strong>Blended APY:</strong> 4.25% on entire pool, 7.1% on deployed capital</li>
+                <li><strong>Marinade Finance (mSOL):</strong> 30% allocation, 6.2% APY - Liquid staking with $2.8B TVL, 9+ audits, instant liquidity on DEXs</li>
+                <li><strong>Jito Staking (JitoSOL):</strong> 15% allocation, 5.9% APY - MEV-boosted staking, $1.9B TVL, proven track record</li>
+                <li><strong>Marginfi USDC Lending:</strong> 15% allocation, 6.4% APY - Over-collateralized lending, $420M TVL, audited by OtterSec + Sec3</li>
+                <li><strong>Blended APY:</strong> 3.7% on entire pool, 6.2% on deployed capital</li>
             </ul>
 
             <h4>Phase 2: Growth (Pool $200k-$1M TVL)</h4>
             <p><strong>Balanced approach:</strong> 70% deployed, 30% liquid as pool matures and claim patterns become predictable.</p>
             <ul>
-                <li><strong>Diversification expansion:</strong> Add Sanctum LST (10%, 7.5% APY), Solend USDC (5%, 5.2% APY)</li>
-                <li><strong>Pilot Tier 2 strategies:</strong> Kamino Finance USDC-USDT vaults (5%, 12.3% APY) - Low impermanent loss stable pair</li>
-                <li><strong>Blended APY:</strong> 5.2% on entire pool, 7.4% on deployed capital</li>
+                <li><strong>Diversification expansion:</strong> Add Sanctum LST (10%, 6.8% APY), Solend USDC (5%, 4.8% APY)</li>
+                <li><strong>Pilot Tier 2 strategies:</strong> Kamino Finance USDC-USDT vaults (5%, 11.2% APY) - Low impermanent loss stable pair</li>
+                <li><strong>Blended APY:</strong> 4.56% on entire pool, 6.5% on deployed capital</li>
             </ul>
 
             <h4>Phase 3: Mature (Pool $1M+ TVL)</h4>
             <p><strong>Aggressive optimization:</strong> 80% deployed, 20% liquid reserves (ample for instant payouts at scale).</p>
             <ul>
                 <li><strong>Full diversification:</strong> 7 uncorrelated strategies across liquid staking, lending, and stable yield farming</li>
-                <li><strong>Enhanced yield:</strong> Add Drift Protocol USDC Earn (5%, 10.1% APY), increase Kamino allocation to 10%</li>
-                <li><strong>Blended APY:</strong> 6.3% on entire pool, 7.9% on deployed capital</li>
-                <li><strong>Annual yield at $2M TVL:</strong> $126k additional protocol revenue</li>
+                <li><strong>Enhanced yield:</strong> Add Drift Protocol USDC Earn (5%, 9.3% APY), increase Kamino allocation to 10%</li>
+                <li><strong>Blended APY:</strong> 5.58% on entire pool, 7.0% on deployed capital</li>
+                <li><strong>Annual yield at $2M TVL:</strong> $111.6k additional protocol revenue</li>
             </ul>
 
             <h3>Risk Management Framework</h3>
@@ -465,6 +471,7 @@ Payout: $0 ❌ (under minimum threshold)</code></pre>
                     <li>Emergency threshold: Auto-withdraw from yield if liquid reserves drop below 15%</li>
                     <li>Only protocols with: >$100M TVL, 12+ months live, 2+ security audits, no critical exploits</li>
                 </ul>
+                <p><em>Note: APY rates shown are as of Feb 28, 2026 and fluctuate based on market conditions. Rates are reviewed weekly and documentation updated monthly.</em></p>
             </div>
 
             <h4>Protocol Selection Criteria (All Must Pass)</h4>
@@ -500,22 +507,22 @@ Payout: $0 ❌ (under minimum threshold)</code></pre>
                         <td style="padding: 10px; border: 1px solid #00ff00;">$100k</td>
                         <td style="padding: 10px; border: 1px solid #00ff00;">Phase 1</td>
                         <td style="padding: 10px; border: 1px solid #00ff00;">60%</td>
-                        <td style="padding: 10px; border: 1px solid #00ff00;">$4,245</td>
-                        <td style="padding: 10px; border: 1px solid #00ff00;">4.2% of pool value</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$3,705</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">3.7% of pool value</td>
                     </tr>
                     <tr style="border: 1px solid #00ff00; background: rgba(0, 255, 0, 0.05);">
                         <td style="padding: 10px; border: 1px solid #00ff00;">$500k</td>
                         <td style="padding: 10px; border: 1px solid #00ff00;">Phase 2</td>
                         <td style="padding: 10px; border: 1px solid #00ff00;">70%</td>
-                        <td style="padding: 10px; border: 1px solid #00ff00;">$26,100</td>
-                        <td style="padding: 10px; border: 1px solid #00ff00;">5.2% of pool value</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$22,800</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">4.56% of pool value</td>
                     </tr>
                     <tr style="border: 1px solid #00ff00;">
                         <td style="padding: 10px; border: 1px solid #00ff00;">$2M</td>
                         <td style="padding: 10px; border: 1px solid #00ff00;">Phase 3</td>
                         <td style="padding: 10px; border: 1px solid #00ff00;">80%</td>
-                        <td style="padding: 10px; border: 1px solid #00ff00;">$126,000</td>
-                        <td style="padding: 10px; border: 1px solid #00ff00;">6.3% of pool value</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">$111,600</td>
+                        <td style="padding: 10px; border: 1px solid #00ff00;">5.58% of pool value</td>
                     </tr>
                 </tbody>
             </table>

@@ -149,7 +149,7 @@ anchor deploy --provider.cluster devnet
 
 Key protocol parameters (defined in `constants.rs`):
 
-- **Coverage Levels**: 30%, 50%, 70%
+- **Coverage Levels**: Any percentage between 30% and 70% (e.g., 30%, 45%, 50%, 65%, 70%)
 - **Duration Range**: 7-30 days
 - **Max Position**: $50K per policy
 - **Price Dump Threshold**: -40% in 24h

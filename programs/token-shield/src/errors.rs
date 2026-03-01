@@ -5,7 +5,7 @@ pub enum TokenShieldError {
     #[msg("Token does not meet eligibility criteria")]
     TokenNotEligible,
     
-    #[msg("Invalid coverage level (must be 30%, 50%, or 70%)")]
+    #[msg("Invalid coverage level (must be between 30% and 70%)")]
     InvalidCoverageLevel,
     
     #[msg("Invalid duration (must be 7-30 days)")]

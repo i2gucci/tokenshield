@@ -61,7 +61,7 @@ pub fn create_team_policy(
     
     // Validate inputs
     require!(
-        VALID_COVERAGE_LEVELS.contains(&coverage_level_bps),
+        coverage_level_bps >= MIN_COVERAGE_LEVEL_BPS && coverage_level_bps <= MAX_COVERAGE_LEVEL_BPS,
         TokenShieldError::InvalidCoverageLevel
     );
     

@@ -149,6 +149,25 @@
                                     <span class="coverage-desc">Maximum Protection</span>
                                 </span>
                             </label>
+                            <label class="coverage-option">
+                                <input type="radio" name="coverage" value="custom" id="coverageCustom">
+                                <span class="coverage-label">
+                                    <span class="coverage-percent">Custom</span>
+                                    <span class="coverage-desc">30-70%</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-hint" style="margin-top: 10px;">
+                            <input 
+                                type="number" 
+                                id="customCoverageInput" 
+                                class="terminal-input" 
+                                placeholder="Enter custom % (30-70)" 
+                                min="30" 
+                                max="70" 
+                                step="1"
+                                style="display: none; width: 200px; margin-top: 10px;"
+                            />
                         </div>
                         <div class="form-hint">
                             Percentage of losses covered if trigger conditions are met
