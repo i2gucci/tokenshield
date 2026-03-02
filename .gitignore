@@ -5,6 +5,10 @@ test-ledger/
 .DS_Store
 node_modules/
 
+# Cargo lock files (Anchor manages dependencies at workspace level)
+programs/**/Cargo.lock
+Cargo.lock
+
 # IDL
 *.so
 *.d.ts

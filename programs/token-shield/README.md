@@ -15,7 +15,7 @@ The protocol is built as a single Anchor program with multiple instruction handl
 - `add_pool_liquidity` - Add funds to the insurance pool
 
 #### 2. **Policy Creation**
-- `create_policy` - Individual coverage enrollment (VRF-based, no wallet connection)
+- `create_policy` - Individual coverage enrollment (oracle verifies position, VRF-based policy ID, no wallet connection)
 - `create_team_policy` - Team-sponsored bulk coverage for holders
 
 #### 3. **Oracle Integration**
@@ -84,7 +84,7 @@ pub struct TeamPolicy {
 
 ### VRF-Based Policy IDs
 Policies use Chainlink VRF (or similar) to generate verifiable random policy IDs. This enables:
-- No wallet connection required for enrollment
+- No wallet connection required (oracle verifies position via wallet address)
 - Bearer bond model (policy ID + secret)
 - Maximum privacy for users
 

@@ -11,6 +11,9 @@ pub enum TokenShieldError {
     #[msg("Invalid duration (must be 7-30 days)")]
     InvalidDuration,
     
+    #[msg("Position value below minimum ($1,000)")]
+    PositionValueTooLow,
+    
     #[msg("Position size exceeds maximum ($50k)")]
     PositionTooLarge,
     

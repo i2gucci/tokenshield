@@ -213,7 +213,7 @@ pub struct OracleData {
     /// Last update timestamp
     pub last_update: i64,
     
-    /// Oracle source (Pyth, Switchboard, etc.)
+    /// Oracle source (Pyth, Jupiter, Manual)
     pub oracle_source: OracleSource,
     
     /// Bump seed
@@ -294,7 +294,6 @@ pub enum TriggerType {
 #[derive(AnchorSerialize, AnchorDeserialize, Clone, Copy, PartialEq, Eq)]
 pub enum OracleSource {
     Pyth,
-    Switchboard,
     Jupiter,
     Manual, // For testing
 }

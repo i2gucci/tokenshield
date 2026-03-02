@@ -33,7 +33,7 @@ pub mod token_shield {
         instructions::initialize_oracle_data(ctx, token_mint)
     }
 
-    /// Create a new coverage policy (VRF-based, no wallet connection required)
+    /// Create a new coverage policy (oracle verifies position via wallet address, VRF-based policy ID, no wallet connection)
     pub fn create_policy(
         ctx: Context<CreatePolicy>,
         wallet_address: Pubkey,

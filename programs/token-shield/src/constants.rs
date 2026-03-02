@@ -15,6 +15,9 @@ pub const MAX_COVERAGE_LEVEL_BPS: u16 = 7000;
 /// Suggested coverage levels for UI (users can select any value between min/max)
 pub const SUGGESTED_COVERAGE_LEVELS: [u16; 3] = [3000, 5000, 7000]; // 30%, 50%, 70%
 
+/// Minimum position value in USD (scaled by 1e6)
+pub const MIN_POSITION_USD: u64 = 1_000_000_000; // $1k
+
 /// Maximum position size in USD (scaled by 1e6)
 pub const MAX_POSITION_USD: u64 = 50_000_000_000; // $50k
 

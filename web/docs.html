@@ -208,32 +208,41 @@
             <div class="doc-section" id="enrollment">
                 <div class="doc-content">
                     <h2 class="doc-section-title"><span class="section-marker">##</span> ENROLLMENT & PREMIUM MECHANICS</h2>
-                    <p class="doc-text">Enrolling in Token Shield coverage is designed to be simple and gas-efficient. Here's how the process works:</p>
+                    <p class="doc-text">Token Shield insures <strong>existing positions only</strong>. You must hold the tokens before creating a policy. Here's how the process works:</p>
+
+                    <div class="callout warning mt-20 mb-20">
+                        <p><strong>⚠️ IMPORTANT:</strong> Token Shield only insures positions you already hold. You cannot purchase insurance for tokens you intend to buy later. Position size is verified on-chain and locked at policy creation. This prevents adverse selection and ensures pool sustainability.</p>
+                    </div>
 
                     <h3 class="doc-subsection-title">Step-by-Step Enrollment</h3>
                     <ol class="doc-list">
-                        <li><span class="list-marker">1.</span> <strong>Submit Position Details:</strong> Enter your Solana wallet address and token contract address via encrypted form (no wallet connection required)</li>
-                        <li><span class="list-marker">2.</span> <strong>Position Verification:</strong> Oracle verifies your token holdings on-chain at submission timestamp</li>
+                        <li><span class="list-marker">1.</span> <strong>Submit Wallet Address:</strong> Enter your Solana wallet address via encrypted form. No wallet connection or signing required.</li>
+                        <li><span class="list-marker">2.</span> <strong>Position Verification:</strong> Oracle verifies your actual token holdings on-chain at current timestamp. An immutable snapshot is taken - this becomes your maximum insurable amount.</li>
                         <li><span class="list-marker">3.</span> <strong>Select Token:</strong> Choose from the list of eligible tokens (or enter contract address for eligibility check)</li>
-                        <li><span class="list-marker">4.</span> <strong>Choose Coverage Level:</strong> Select coverage percentage (30%, 50%, or 70% loss protection)</li>
-                        <li><span class="list-marker">5.</span> <strong>Select Duration:</strong> Pick coverage period (7, 14, 21, or 30 days)</li>
-                        <li><span class="list-marker">6.</span> <strong>VRF Policy Generation:</strong> System uses Chainlink VRF to generate unique policy ID + secret</li>
-                        <li><span class="list-marker">7.</span> <strong>Pay Premium:</strong> Send SOL/USDC to deterministic payment address (derived from policy ID)</li>
-                        <li><span class="list-marker">8.</span> <strong>Receive Policy Token:</strong> Get SPL token (TS-POLICY-####) in your wallet representing active coverage</li>
-                        <li><span class="list-marker">9.</span> <strong>Backup Policy Credentials:</strong> Download policy ID + secret (like private key - if lost, coverage unrecoverable)</li>
+                        <li><span class="list-marker">4.</span> <strong>Choose Coverage Amount:</strong> Insure your full verified holdings or a partial amount (minimum $1,000 position value)</li>
+                        <li><span class="list-marker">5.</span> <strong>Select Coverage Level:</strong> Choose coverage percentage (30%, 50%, or 70% loss protection)</li>
+                        <li><span class="list-marker">6.</span> <strong>Select Duration:</strong> Pick coverage period (7, 14, 21, or 30 days)</li>
+                        <li><span class="list-marker">7.</span> <strong>VRF Policy Generation:</strong> System uses Chainlink VRF to generate unique policy ID + secret for bearer-bond privacy</li>
+                        <li><span class="list-marker">8.</span> <strong>Pay Premium:</strong> Approve premium payment in SOL/USDC via wallet transaction</li>
+                        <li><span class="list-marker">9.</span> <strong>Receive Policy Token:</strong> Get SPL token (TS-POLICY-####) in your wallet representing active coverage</li>
+                        <li><span class="list-marker">10.</span> <strong>Backup Policy Credentials:</strong> Download policy ID + secret (like private key - if lost, coverage unrecoverable)</li>
                     </ol>
 
                     <div class="callout warning mt-20">
-                        <p><strong>Important:</strong> Token Shield uses a bearer bond model for maximum privacy. Your policy ID + secret are like a private key. Store them securely (download file, print backup, optional encrypted email). If all backups are lost, your coverage cannot be recovered.</p>
+                        <p><strong>Position Management:</strong> After policy creation, if you sell tokens, your coverage remains at the snapshot amount (insurance doesn't penalize exiting positions). If you buy more tokens, the new tokens are NOT covered unless you purchase additional/renewed coverage.</p>
+                    </div>
+
+                    <div class="callout info mt-20">
+                        <p><strong>Privacy Model:</strong> No wallet connection required. Oracle verification happens once at enrollment via submitted address, then the bearer-bond policy model ensures your ongoing position is not continuously tracked. Policy ID + secret are like a private key for maximum privacy.</p>
                     </div>
 
                     <h3 class="doc-subsection-title">Premium Calculation Formula</h3>
                     <p class="doc-text">Premiums are algorithmically calculated using the following model:</p>
 
-                    <div class="doc-code"><code>Premium = PositionSize × CoverageLevel × Duration × RiskScore × BaseRate
+                    <div class="doc-code"><code>Premium = PositionValue × CoverageLevel × Duration × RiskScore × BaseRate
 
 Where:
-- PositionSize: USD value of covered position
+- PositionValue: USD value of insured position (verified on-chain)
 - CoverageLevel: 0.3, 0.5, or 0.7 (30%, 50%, 70%)
 - Duration: Days / 30 (normalized to monthly)
 - RiskScore: 1-10 (from eligibility assessment)
@@ -243,8 +252,8 @@ Where:
                     <div class="doc-example">
                         <div class="example-header">[PREMIUM CALCULATION EXAMPLE]</div>
                         <div class="example-content">
-                            <p class="doc-text"><strong>💰Position:</strong> $10,000 in $NEET token</p>
-                            <p class="doc-text"><strong>Coverage:</strong> 50% loss protection</p>
+                            <p class="doc-text"><strong>💰Verified Holdings:</strong> 1,000,000 $NEET tokens (current value: $10,000)</p>
+                            <p class="doc-text"><strong>Position to Insure:</strong> $10,000 (full holdings) at 50% coverage = $5,000 max payout</p>
                             <p class="doc-text"><strong>Duration:</strong> 14 days</p>
                             <p class="doc-text"><strong>Risk Score:</strong> 7/10 (high volatility, low liquidity)</p>
                             <p class="doc-text"><strong>Calculation:</strong></p>
@@ -252,6 +261,7 @@ Where:
         = $10,000 × 0.5 × 0.467 × 7 × 0.02
         = $327.90 (paid in SOL or USDC)</code></div>
                             <p class="doc-text"><strong>Result:</strong> Pay ~$328 to insure against losing more than $5,000 over 14 days.</p>
+                            <p class="doc-text"><strong>Important:</strong> Position snapshot is locked at 1,000,000 tokens. If token price increases, insurance still covers the $10,000 value snapshot, not the new market value.</p>
                         </div>
                     </div>
 

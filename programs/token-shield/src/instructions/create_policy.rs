@@ -100,6 +100,11 @@ pub fn create_policy(
     )?;
     
     require!(
+        position_value_usd >= MIN_POSITION_USD,
+        TokenShieldError::PositionValueTooLow
+    );
+    
+    require!(
         position_value_usd <= MAX_POSITION_USD,
         TokenShieldError::PositionTooLarge
     );

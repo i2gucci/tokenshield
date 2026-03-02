@@ -158,13 +158,17 @@ function validateForm() {
     // Basic Solana address validation (32-44 characters, base58)
     const isValidAddress = walletAddress.length >= 32 && walletAddress.length <= 44;
     const hasValidPosition = tokenCount > 0 && appState.tokenInfo;
+    const withinMinValue = positionValueUSD >= 1000; // $1k minimum
     const withinMaxValue = positionValueUSD <= 50000; // $50k max per policy
 
-    createButton.disabled = !(isValidAddress && hasValidPosition && withinMaxValue);
+    createButton.disabled = !(isValidAddress && hasValidPosition && withinMinValue && withinMaxValue);
     
-    // Show warning if over max
+    // Show warning if outside valid range
     const positionUSDElement = document.getElementById('positionUSD');
-    if (positionValueUSD > 50000) {
+    if (positionValueUSD < 1000 && positionValueUSD > 0) {
+        positionUSDElement.style.color = '#ff6b6b';
+        positionUSDElement.title = 'Position value below $1,000 minimum';
+    } else if (positionValueUSD > 50000) {
         positionUSDElement.style.color = '#ff6b6b';
         positionUSDElement.title = 'Position value exceeds $50k maximum';
     } else {
@@ -323,6 +327,12 @@ async function createPolicy() {
         const policyCredentials = generatePolicyCredentials();
 
         // TODO: Implement actual Anchor transaction with VRF proof
+        // REQUIRES: Program deployed to devnet/mainnet
+        // ACTION NEEDED:
+        //   1. Initialize Anchor Program object with deployed program ID
+        //   2. Call program.methods.createPolicy() with proper accounts
+        //   3. Sign transaction with connected wallet
+        //   4. Return policy PDA address instead of mock credentials
         // For now, simulate the transaction
         await new Promise(resolve => setTimeout(resolve, 2000));
 
@@ -452,7 +462,12 @@ async function lookupPolicy() {
 
     try {
         // TODO: Fetch actual policy from Solana using policyId
-        // Verify secret matches stored hash
+        // REQUIRES: Program deployed + policy PDA derivation
+        // ACTION NEEDED:
+        //   1. Derive policy PDA from policy_id bytes
+        //   2. Call program.account.policy.fetch(policyPda)
+        //   3. Verify secret matches on-chain hash
+        //   4. Parse and display actual policy data
         // For now, use mock data
         await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -598,6 +613,11 @@ async function loadUserPolicies() {
 
     try {
         // TODO: Fetch actual policies from Solana
+        // REQUIRES: Program deployed + indexing solution
+        // ACTION NEEDED:
+        //   1. Use program.account.policy.all() with filters on covered_wallet
+        //   2. OR maintain off-chain index (recommended for performance)
+        //   3. Parse policies and format for display
         // For now, use mock data
         const mockPolicies = [
             {
@@ -676,6 +696,11 @@ function initializePoolStats() {
 async function loadPoolStats() {
     try {
         // TODO: Fetch actual pool stats from Solana
+        // REQUIRES: Program deployed
+        // ACTION NEEDED:
+        //   1. Derive pool PDA (seeds: ["pool"])
+        //   2. Call program.account.pool.fetch(poolPda)
+        //   3. Parse and display actual pool data
         // For now, use mock data
         const mockStats = {
             tvl: 12500000,

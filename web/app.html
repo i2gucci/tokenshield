@@ -62,7 +62,7 @@
                             placeholder="Your Solana wallet address (e.g., 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU)"
                         >
                         <div class="form-hint">
-                            Enter the wallet address you want to protect (no connection required)
+                            Enter the wallet address you want to protect (no connection required - oracle verifies holdings)
                         </div>
                     </div>
 
@@ -117,7 +117,7 @@
                             step="0.000001"
                         >
                         <div class="form-hint">
-                            Number of tokens you want to insure (max $50k USD value)
+                            Number of tokens you want to insure (min $1k, max $50k USD value)
                         </div>
                         <div class="position-value">
                             Position Value: <span id="positionUSD">$0.00</span>
@@ -228,6 +228,7 @@
                     <div class="form-hint mt-20">
                         <strong>How VRF Enrollment Works:</strong>
                         <br>• No wallet connection required
+                        <br>• Oracle verifies your actual on-chain token holdings
                         <br>• Policy ID generated via Chainlink VRF (verifiable randomness)
                         <br>• You receive a unique policy ID + secret for claims
                         <br>• SPL policy token minted to your specified address
