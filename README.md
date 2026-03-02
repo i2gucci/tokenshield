@@ -152,8 +152,9 @@ Token Shield smart contracts are implemented and undergoing testing. **NOT audit
 - ⏳ Security audit (planned Q2 2026)
 - ⏳ Mainnet launch (Q3 2026)
 
-### Recent Activity (Feb 28, 2026)
+### Recent Activity (March 2, 2026)
 
+- ✅ Implemented $1,000 minimum position value requirement
 - ✅ Fixed Solana dependency conflicts (1.16.0)
 - ✅ Built Anchor program successfully
 - ✅ Custom coverage levels (30-70% range)

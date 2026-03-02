@@ -326,14 +326,9 @@ async function createPolicy() {
         // Generate VRF-based policy ID and secret (simulated - in production, use Chainlink VRF)
         const policyCredentials = generatePolicyCredentials();
 
-        // TODO: Implement actual Anchor transaction with VRF proof
-        // REQUIRES: Program deployed to devnet/mainnet
-        // ACTION NEEDED:
-        //   1. Initialize Anchor Program object with deployed program ID
-        //   2. Call program.methods.createPolicy() with proper accounts
-        //   3. Sign transaction with connected wallet
-        //   4. Return policy PDA address instead of mock credentials
-        // For now, simulate the transaction
+        // DEMO MODE: Simulating blockchain transaction
+        // Production implementation will call Anchor program.methods.createPolicy()
+        // with proper PDA derivation and on-chain verification
         await new Promise(resolve => setTimeout(resolve, 2000));
 
         // Store credentials for display
@@ -461,14 +456,8 @@ async function lookupPolicy() {
     container.innerHTML = '<div class="loading-state"><p class="mono-text">$ verifying credentials...</p></div>';
 
     try {
-        // TODO: Fetch actual policy from Solana using policyId
-        // REQUIRES: Program deployed + policy PDA derivation
-        // ACTION NEEDED:
-        //   1. Derive policy PDA from policy_id bytes
-        //   2. Call program.account.policy.fetch(policyPda)
-        //   3. Verify secret matches on-chain hash
-        //   4. Parse and display actual policy data
-        // For now, use mock data
+        // DEMO MODE: Simulating policy lookup
+        // Production implementation will derive policy PDA and fetch from on-chain program
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         const mockPolicy = {
@@ -612,13 +601,8 @@ async function loadUserPolicies() {
     container.innerHTML = '<div class="loading-state"><p class="mono-text">$ loading policies...</p></div>';
 
     try {
-        // TODO: Fetch actual policies from Solana
-        // REQUIRES: Program deployed + indexing solution
-        // ACTION NEEDED:
-        //   1. Use program.account.policy.all() with filters on covered_wallet
-        //   2. OR maintain off-chain index (recommended for performance)
-        //   3. Parse policies and format for display
-        // For now, use mock data
+        // DEMO MODE: Simulating policy lookup by wallet
+        // Production implementation will query program accounts with wallet filter
         const mockPolicies = [
             {
                 id: '0x7a3f2b1c',
@@ -695,13 +679,8 @@ function initializePoolStats() {
 
 async function loadPoolStats() {
     try {
-        // TODO: Fetch actual pool stats from Solana
-        // REQUIRES: Program deployed
-        // ACTION NEEDED:
-        //   1. Derive pool PDA (seeds: ["pool"])
-        //   2. Call program.account.pool.fetch(poolPda)
-        //   3. Parse and display actual pool data
-        // For now, use mock data
+        // DEMO MODE: Using simulated pool statistics
+        // Production implementation will fetch live data from deployed program account
         const mockStats = {
             tvl: 12500000,
             activePolicies: 342,

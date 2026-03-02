@@ -2,6 +2,19 @@
   "name": "token-shield-protocol",
   "version": "0.1.0",
   "description": "DeFi insurance protocol for high-risk Solana tokens",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/i2gucci/tokenshield.git"
+  },
+  "keywords": [
+    "solana",
+    "defi",
+    "insurance",
+    "anchor",
+    "smart-contracts",
+    "web3"
+  ],
+  "license": "MIT",
   "scripts": {
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
