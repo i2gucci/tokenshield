@@ -1,5 +1,25 @@
 // Token Shield App - VRF Anonymous Enrollment
 
+// Copy contract address to clipboard
+function copyContractAddress() {
+    const contractAddress = document.getElementById('contractAddress').textContent;
+    
+    navigator.clipboard.writeText(contractAddress).then(function() {
+        const btn = document.querySelector('.copy-contract-btn');
+        const originalText = btn.textContent;
+        btn.textContent = '[copied!]';
+        btn.style.color = '#00dd00';
+        
+        setTimeout(function() {
+            btn.textContent = originalText;
+            btn.style.color = '';
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Failed to copy:', err);
+        alert('Failed to copy address. Please copy manually.');
+    });
+}
+
 // State Management
 const appState = {
     activeTab: 'create',

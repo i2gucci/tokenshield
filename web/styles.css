@@ -41,6 +41,82 @@ body.terminal-mode {
     color: var(--terminal-fg);
 }
 
+/* Contract Banner */
+.contract-banner {
+    background: linear-gradient(90deg, #001a00 0%, #003300 50%, #001a00 100%);
+    border-bottom: 2px solid var(--terminal-fg);
+    padding: 10px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 221, 0, 0.2);
+}
+
+.contract-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+.contract-label {
+    color: var(--terminal-fg);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.contract-address {
+    color: var(--terminal-info);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--terminal-fg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    user-select: all;
+}
+
+.copy-contract-btn {
+    background: transparent;
+    border: 1px solid var(--terminal-fg);
+    color: var(--terminal-fg);
+    padding: 3px 10px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    transition: all 0.2s ease;
+}
+
+.copy-contract-btn:hover {
+    background: var(--terminal-fg);
+    color: var(--terminal-bg);
+}
+
+.copy-contract-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .contract-banner {
+        padding: 8px 10px;
+    }
+    
+    .contract-banner-content {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .contract-address {
+        font-size: 10px;
+        padding: 4px 8px;
+        word-break: break-all;
+    }
+}
+
 /* ASCII Header */
 .ascii-header {
     padding: 12px 20px 8px;
